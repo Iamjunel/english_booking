@@ -23,19 +23,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($company as $com)
+            @foreach ($teacher as $t)
             <tr>
-            <td>{{$com->alias}}</td>
-            <td>{{$com->cid}}</td>
-            <td>{{$com->cpass}}</td>
-            <td><button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$com->id}}">削除</button></td>
-            <div class="modal fade" id="sample-{{$com->id}}" tabindex="-1" role="dialog" aria- 
+            <td>{{$t->name}}</td>
+            <td>{{$t->tid}}</td>
+            <td>{{$t->tpass}}</td>
+            <td><button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$t->id}}">削除</button></td>
+            <div class="modal fade" id="sample-{{$t->id}}" tabindex="-1" role="dialog" aria- 
             labelledby="demoModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
-                    <form action="company/{{$com->id}}" method="post">
+                    <form action="teacher/{{$t->id}}" method="post">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="demoModalLabel">{{$com->name}}</h5>
+							<h5 class="modal-title" id="demoModalLabel">{{$t->name}}</h5>
 								<button type="button" class="close" data-dismiss="modal" aria- 
                                 label="Close">
 									<span aria-hidden="true">&times;</span>

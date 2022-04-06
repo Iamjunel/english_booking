@@ -9,7 +9,7 @@ class BusinessHours extends Model
 {
     use HasFactory;
 
-    protected $table = 'company_business_hours';
+    protected $table = 'teacher_business_hours';
 
     protected $fillable = [
         'monday_start',
@@ -26,11 +26,11 @@ class BusinessHours extends Model
         'saturday_end',
         'sunday_start',
         'sunday_end',
-        'company_id',
+        'teacher_id',
         'created_at',
         'updated_at'
     ];
-    public function company(){
-        return $this->belongsTo('App\Models\Company','id');
+    public function teacher(){
+        return $this->belongsTo('App\Models\Teacher','id');
     }
 }

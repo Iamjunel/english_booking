@@ -29,15 +29,16 @@
     <div class="">
         <div class="row justify-content-center pt-2">
             @if(Session::has('message'))
-            <div class="alert alert-success">
+                @if(Session::get('success'))
+                <div class="alert alert-success">
+                @else
+                <div class="alert alert-danger">
+                @endif
                 {{Session::get('message')}}
-            </div>
+                </div>
             @endif
         </div>
         <div class="row justify-content-center">
-            
-           
-
            @yield('content')
      </div>
     </div> 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddInchargenameCompanyTable extends Migration
+class CreateTeacherImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class AddInchargenameCompanyTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('company', function ($table) {
-            $table->string('in_charge')->nullable();
-
+        Schema::create('teacher_images', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('url');
+            $table->foreignId('teacher_id');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,10 +29,6 @@ class AddInchargenameCompanyTable extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('company', function ($table) {
-            $table->dropColumn('in_charge');
-            
-        });
+        Schema::dropIfExists('teacher_images');
     }
 }

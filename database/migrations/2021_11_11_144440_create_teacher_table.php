@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyStatusTable extends Migration
+class CreateTeacherTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateCompanyStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_status', function (Blueprint $table) {
+        Schema::create('teacher', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date')->nullable();
-            $table->string('status')->nullable();
-            $table->string('time')->nullable();
-            $table->string('comment')->nullable();
-            $table->foreignId('company_id')->nullable();
+            $table->string('tid');
+            $table->string('tpass');
+            $table->string('name');
+            $table->string('email')->nullable();
+            $table->text('profile')->nullable();
+            $table->text('message_students')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +33,6 @@ class CreateCompanyStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_status');
+        Schema::dropIfExists('teacher');
     }
 }

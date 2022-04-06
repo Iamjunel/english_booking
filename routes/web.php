@@ -23,29 +23,42 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function() {
     return view('welcome');
 });
-Route::get('admin/login', 'App\Http\Controllers\CompanyController@login');
-Route::get('admin', 'App\Http\Controllers\CompanyController@index');
-Route::get('admin/company', 'App\Http\Controllers\CompanyController@getAllCompany');
-Route::get('admin/register', 'App\Http\Controllers\CompanyController@companyRegister');
-Route::post('admin', 'App\Http\Controllers\CompanyController@store');
-Route::post('admin/checkLogin', 'App\Http\Controllers\CompanyController@checkLogin');
-Route::get('admin/logout', 'App\Http\Controllers\CompanyController@logout');
+//Routes for the admin page.
+Route::get('admin/login', 'App\Http\Controllers\AdminController@login');
+Route::get('admin', 'App\Http\Controllers\AdminController@index');
+Route::post('admin/checkLogin', 'App\Http\Controllers\AdminController@checkLogin');
+Route::get('admin/logout', 'App\Http\Controllers\AdminController@logout');
+Route::get('admin/register', 'App\Http\Controllers\AdminController@teacherRegister');
+Route::post('admin', 'App\Http\Controllers\AdminController@store');
+Route::get('admin/teachers', 'App\Http\Controllers\AdminController@getAllTeacher');
+Route::delete('admin/teacher/{id}', 'App\Http\Controllers\AdminController@deleteTeacherById');
+//Routes for the teacher page.
+Route::get('teacher', 'App\Http\Controllers\TeacherController@index');
+Route::get('teacher/login', 'App\Http\Controllers\TeacherController@login');
+Route::post('teacher/checklogin', 'App\Http\Controllers\TeacherController@checkLogin');
+Route::get('teacher/logout', 'App\Http\Controllers\TeacherController@logout');
+Route::get('teacher/edit/{id}', 'App\Http\Controllers\TeacherController@edit');
+Route::post('teacher/update', 'App\Http\Controllers\TeacherController@update');
+
+
 
 //hidden routes
-Route::delete('admin/company/{id}', 'App\Http\Controllers\CompanyController@deleteCompanyById');
+/* Route::delete('admin/company/{id}', 'App\Http\Controllers\CompanyController@deleteCompanyById');
 Route::get('company/details/{id}', 'App\Http\Controllers\CompanyController@getCompanyById');
-Route::patch('company/{id}', 'App\Http\Controllers\CompanyController@update');
+Route::patch('company/{id}', 'App\Http\Controllers\CompanyController@update'); */
 
 
-Route::get('care-taxi', 'App\Http\Controllers\CareTaxiController@index');
+/* Route::get('care-taxi', 'App\Http\Controllers\CareTaxiController@index');
 Route::get('care-taxi/login', 'App\Http\Controllers\CareTaxiController@login');
 Route::get('care-taxi/booking', 'App\Http\Controllers\CareTaxiController@availableSlot');
 
 Route::post('care-taxi/status/update', 'App\Http\Controllers\CareTaxiController@statusUpdate');
 Route::get('care-taxi/company/edit/{id}', 'App\Http\Controllers\CareTaxiController@edit');
 Route::post('care-taxi/company/update', 'App\Http\Controllers\CareTaxiController@update');
+
 Route::post('care-taxi/checklogin', 'App\Http\Controllers\CareTaxiController@checkLogin');
-Route::get('care-taxi/logout', 'App\Http\Controllers\CareTaxiController@logout');
+Route::get('care-taxi/logout', 'App\Http\Controllers\CareTaxiController@logout'); */
+
 Route::get('care-taxi/slot/{id}/{date}', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
 Route::get('care-taxi/slot/edit/{id}/{date}', 'App\Http\Controllers\CareTaxiController@editDetailDate');
 Route::delete('care-taxi/removeImage/{id}', 'App\Http\Controllers\CompanyImagesController@removeImage');

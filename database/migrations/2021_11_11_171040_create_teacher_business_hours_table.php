@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyBusinessHoursTable extends Migration
+class CreateTeacherBusinessHoursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCompanyBusinessHoursTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_business_hours', function (Blueprint $table) {
+        Schema::create('teacher_business_hours', function (Blueprint $table) {
             $table->increments('id');
             $table->string('monday_start');
             $table->string('monday_end');
@@ -29,7 +29,7 @@ class CreateCompanyBusinessHoursTable extends Migration
             $table->string('saturday_end');
             $table->string('sunday_start');
             $table->string('sunday_end');
-            $table->foreignId('company_id');
+            $table->foreignId('teacher_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -42,6 +42,6 @@ class CreateCompanyBusinessHoursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_business_hours');
+        Schema::dropIfExists('teacher_business_hours');
     }
 }
