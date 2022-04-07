@@ -39,9 +39,10 @@ Route::post('teacher/checklogin', 'App\Http\Controllers\TeacherController@checkL
 Route::get('teacher/logout', 'App\Http\Controllers\TeacherController@logout');
 Route::get('teacher/edit/{id}', 'App\Http\Controllers\TeacherController@edit');
 Route::post('teacher/update', 'App\Http\Controllers\TeacherController@update');
-
-
-
+Route::get('teacher/booking', 'App\Http\Controllers\TeacherController@availableSlot');
+Route::get('teacher/slot/{id}/{date}', 'App\Http\Controllers\TeacherController@slotDetailDate');
+Route::get('teacher/slot/edit/{id}/{date}', 'App\Http\Controllers\TeacherController@editDetailDate');
+Route::post('teacher/status/update', 'App\Http\Controllers\TeacherController@statusUpdate');
 //hidden routes
 /* Route::delete('admin/company/{id}', 'App\Http\Controllers\CompanyController@deleteCompanyById');
 Route::get('company/details/{id}', 'App\Http\Controllers\CompanyController@getCompanyById');

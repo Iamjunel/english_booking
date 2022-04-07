@@ -16,7 +16,7 @@
     oninput="this.setCustomValidity('')" required/>
                             </div>
                             <div class="mb-2 mt-2">
-                                <input type="submit" class="btn btn-block btn-secondary text-center" value="ログインする" />
+                                <input type="submit" class="btn btn-block btn-secondary text-center " value="ログインする" disabled/>
                             </div>
                             
                         </form>

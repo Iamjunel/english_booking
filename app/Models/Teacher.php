@@ -27,6 +27,6 @@ class Teacher extends Model
     }
     public function status()
     {
-        return $this->hasOne('App\Models\CompanyStatus', 'teacher_id');
+        return $this->hasOne('App\Models\TeacherStatus', 'teacher_id');
     }
 }

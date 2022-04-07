@@ -18,29 +18,6 @@
         .hide{
             display: none;
         }
-
-        
-.custom-file-input::before {
-  content: 'Select some files';
-  display: inline-block;
-  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
-  border-radius: 3px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
-}
-.custom-file-input:hover::before {
-  border-color: black;
-}
-.custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
         
 
         </style>
@@ -73,6 +50,7 @@
         </div>
         <div class="row justify-content-center">
            @yield('content')
+           <input type="hidden" id="enc_id" value="{{Session::get('id')}}"/>
      </div>
     </div> 
 
@@ -99,7 +77,7 @@
         format: "yy/mm/dd",
         titleFormat: "yyyy年 ", /* Leverages same syntax as 'format' */
         yearSuffix: "年",
-    };
+        };
 			$("#bao").datepicker({
 				format: "yyyy年mm月",
                 viewMode: "months", 
@@ -108,18 +86,18 @@
                 language: "ja"
 				
 			});
-		})
+	})
 
 
-     $('div.alert').delay(3000).slideUp(300);
+     /* /* $('div.alert').delay(3000).slideUp(300);
     $(document).ready(function(){
          $('#choose-file').inputFileText({
-    text: 'Select File'
-});
-    $('#field-test2').on('click', function(){
+    text: 'Select File' */
+    //}); */
+    /* $('#field-test2').on('click', function(){
         $( "#field-test" ).append(',' + $( "#field-test2" ).val()); 
-    });
-    });
+    }); */
+    //});
     $(document).ready(function(){
     $('.triangle').on("click",function() {
     if($(this).is(':checked')) 
@@ -168,9 +146,12 @@
     <script>
     
         $(document).ready(function () {
-
+            
             var SITEURL = "{{ url('/') }}";
-            var id = {{Session::get('id')}};
+            var enc_id = $("#enc_id").val();
+            console.log(enc_id);
+            //var id = {{Session::get('dec_id')}};
+            
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -209,7 +190,7 @@
                     if (check >= today) {
                     //var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
                        var this_day = moment(date, 'DD.MM.YYYY').format('YYYY-MM-DD')
-                 window.location.href = '/care-taxi/slot/'+ id +'/' + this_day;
+                 window.location.href = '/teacher/slot/'+ enc_id +'/' + this_day;
                     }
                     /* var event_name = prompt('Event Name:');
                     if (event_name) {
