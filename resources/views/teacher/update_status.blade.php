@@ -1,4 +1,4 @@
- @extends('layout.taxi_layout')
+ @extends('layout.teacher_layout')
  @section('content')
     
    
@@ -35,7 +35,23 @@
             <tr>
                 <td style="width: 100px">{{ date('H:i', strtotime($t["time"]))}}</td>
                 <td style="width: 200px">
-                    <div class="form-check form-check-inline">
+                        
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input line" type="radio" name="status-{{$t["time"]}}"  value="line"
+                        @if($t["status"] == 'line')
+                        {{'checked'}} 
+                        @endif
+                        @if($this_time_str > strtotime($t["time"]) && $date == date('Y-m-d'))
+                        {{'disabled'}}
+                        @endif
+                        >
+                        <label class="form-check-label" for="inlineRadio2">
+                            <span class="text-secondary align-middle">
+                            <i class="fa-minus fas"></i>
+                            </span>
+                        </label>
+                        </div>
+                        <div class="form-check form-check-inline">
                         <input class="form-check-input circle" type="radio" name="status-{{$t["time"]}}" id="inlineRadio1" value="circle"
                          @if($t["status"] == 'circle')
                         {{'checked'}} 
@@ -48,23 +64,6 @@
                             <span class="text-info">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
                             <circle cx="8" cy="8" r="8"/>
-                            </svg>
-                            </span>
-                        </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                        <input class="form-check-input triangle" type="radio" name="status-{{$t["time"]}}" id="triangle" value="triangle"
-                        @if($t["status"] == 'triangle')
-                        {{'checked'}} 
-                        @endif
-                        @if($this_time_str > strtotime($t["time"]) && $date == date('Y-m-d'))
-                        {{'disabled'}}
-                        @endif
-                        >
-                        <label class="form-check-label" for="inlineRadio2">
-                            <span class="text-warning">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
                             </svg>
                             </span>
                         </label>
@@ -86,7 +85,7 @@
                 </td>
                 <td >
                     <div class="">
-                    <input type="text" class="form-control status-{{$t["time"]}} @if($t["status"] != 'triangle')
+                    <input type="text" class="form-control status-{{$t["time"]}} @if($t["status"] != 'circle')
                         {{'hide'}} 
                         @endif" id="status-{{$t["time"]}}" name="comment-{{$t["time"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$t["comment"]}}" >
                 </div>

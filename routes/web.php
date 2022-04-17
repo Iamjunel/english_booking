@@ -32,6 +32,14 @@ Route::get('admin/register', 'App\Http\Controllers\AdminController@teacherRegist
 Route::post('admin', 'App\Http\Controllers\AdminController@store');
 Route::get('admin/teachers', 'App\Http\Controllers\AdminController@getAllTeacher');
 Route::delete('admin/teacher/{id}', 'App\Http\Controllers\AdminController@deleteTeacherById');
+
+Route::get('admin/student/register', 'App\Http\Controllers\AdminController@studentRegister');
+Route::post('admin/student/store', 'App\Http\Controllers\AdminController@storeStudent');
+Route::get('admin/student', 'App\Http\Controllers\AdminController@getAllStudent');
+Route::post('admin/student/update', 'App\Http\Controllers\AdminController@updateCourseAndTicket');
+Route::get('admin/student/{id}/history', 'App\Http\Controllers\AdminController@getStudentHistoryById');
+
+
 //Routes for the teacher page.
 Route::get('teacher', 'App\Http\Controllers\TeacherController@index');
 Route::get('teacher/login', 'App\Http\Controllers\TeacherController@login');
@@ -43,6 +51,23 @@ Route::get('teacher/booking', 'App\Http\Controllers\TeacherController@availableS
 Route::get('teacher/slot/{id}/{date}', 'App\Http\Controllers\TeacherController@slotDetailDate');
 Route::get('teacher/slot/edit/{id}/{date}', 'App\Http\Controllers\TeacherController@editDetailDate');
 Route::post('teacher/status/update', 'App\Http\Controllers\TeacherController@statusUpdate');
+
+//Route for the student page.
+Route::post('student/checklogin', 'App\Http\Controllers\StudentController@checkLogin');
+Route::get('student/logout', 'App\Http\Controllers\StudentController@logout');
+Route::get('student/login', 'App\Http\Controllers\StudentController@login');
+Route::get('student', 'App\Http\Controllers\StudentController@index');
+Route::get('student/slot', 'App\Http\Controllers\StudentController@availableSlot');
+Route::get('student/teacherlist', 'App\Http\Controllers\StudentController@getAllTeacher');
+Route::get('student/edit/{id}', 'App\Http\Controllers\TeacherController@edit');
+Route::post('student/update', 'App\Http\Controllers\TeacherController@update');
+Route::get('student/teacher/detail/{id}', 'App\Http\Controllers\StudentController@getTeacherDetail');
+Route::get('student/history', 'App\Http\Controllers\StudentController@getStudentHistory');
+
+//utility routes
+Route::post('multiple-image/store', 'App\Http\Controllers\CompanyImagesController@multipleImageStore')->name('multiple.image.store');
+Route::get('calendar-event', 'App\Http\Controllers\CalenderController@index');
+Route::post('calendar-crud-ajax', 'App\Http\Controllers\CalenderController@calendarEvents');
 //hidden routes
 /* Route::delete('admin/company/{id}', 'App\Http\Controllers\CompanyController@deleteCompanyById');
 Route::get('company/details/{id}', 'App\Http\Controllers\CompanyController@getCompanyById');
@@ -63,8 +88,7 @@ Route::get('care-taxi/logout', 'App\Http\Controllers\CareTaxiController@logout')
 Route::get('care-taxi/slot/{id}/{date}', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
 Route::get('care-taxi/slot/edit/{id}/{date}', 'App\Http\Controllers\CareTaxiController@editDetailDate');
 Route::delete('care-taxi/removeImage/{id}', 'App\Http\Controllers\CompanyImagesController@removeImage');
-Route::get('calendar-event', 'App\Http\Controllers\CalenderController@index');
-Route::post('calendar-crud-ajax','App\Http\Controllers\CalenderController@calendarEvents');
+
 
 
 Route::get('user', 'App\Http\Controllers\UserController@index');
@@ -74,7 +98,6 @@ Route::get('user/slot/detail/{id}/{date}', 'App\Http\Controllers\UserController@
 Route::get('user/slot/{date}', 'App\Http\Controllers\UserController@availableSlotDetailDate');
 Route::get('user/slot', 'App\Http\Controllers\UserController@availableSlot');
 Route::get('user/contact/{id}/{date}/{time}/{status}', 'App\Http\Controllers\UserController@contactDetail');
-Route::post('multiple-image/store', 'App\Http\Controllers\CompanyImagesController@multipleImageStore')->name('multiple.image.store');
 
 Route::post('user/checklogin', 'App\Http\Controllers\UserController@checkLogin');
 Route::get('user/logout', 'App\Http\Controllers\UserController@logout');

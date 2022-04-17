@@ -25,7 +25,7 @@
         <tbody>
             @foreach ($teacher as $t)
             <tr>
-            <td>{{$t->name}}</td>
+            <td>{{$t->nickname}}</td>
             <td>{{$t->tid}}</td>
             <td>{{$t->tpass}}</td>
             <td><button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$t->id}}">削除</button></td>

@@ -32,7 +32,7 @@
             <a class=" text-dark float-right" href="{{url('teacher/logout')}}">ログアウト</a>
         @endif
         {{-- <a href="/care-taxi" class="text-dark" style="text-decoration: none">津ケアタクネット</a> --}}
-        <a href="/teacher" class="text-dark" style="text-decoration: none">Think English (Teacher)</a>
+        <a href="/teacher" class="text-dark" style="text-decoration: none">Think English Learning Center(Teacher)</a>
         
     </nav>
     <hr/>
@@ -99,19 +99,20 @@
     }); */
     //});
     $(document).ready(function(){
-    $('.triangle').on("click",function() {
+    $('.circle').on("click",function() {
     if($(this).is(':checked')) 
         { 
             var name = '#' +$(this).attr('name');
             var root = $(this).parent().parent().parent();
             var target = root.find("td input");
+             console.log(name);
         $(target[3]).removeClass("hide");
         }else{
 
         }
         
     }); 
-    $('.circle').on("click",function() {
+    $('.line').on("click",function() {
     if($(this).is(':checked')) 
         { 
             var name = '#' +$(this).attr('name');

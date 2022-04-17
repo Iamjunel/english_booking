@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Teacher;
+use App\Models\Student;
 class AdminController extends Controller
 {
 
@@ -115,7 +116,8 @@ class AdminController extends Controller
             return redirect()->back()->with('message', '既に登録済みです。')->with('success', false);
         } else {
             $company = new Teacher();
-            $company->name = $data["name"];
+            $company->name = "";
+            $company->nickname = $data["name"];
             $company->tid = strtolower($data["tid"]);
             $company->tpass = strtolower($data["password"]);
             $company->save();
@@ -142,5 +144,74 @@ class AdminController extends Controller
         $company = Teacher::find($id);
         $company->delete();
         return redirect()->back()->with('message', '会社の削除完了しました。')->with('success', true);
+    }
+    public function studentRegister()
+    {
+        if (!session()->has('cid')) {
+            return redirect('admin/login');
+        }
+        $id = session()->get('id');
+        return view('admin.student_register');
+    }
+    public function storeStudent(Request $request){
+        $data = $request->all();
+        $student = Student::where('sid', $data["sid"])->first();
+        if ($student) {
+            return redirect()->back()->with('message', '既に登録済みです。')->with('success', false);
+        } else {
+            $student = new Student();
+            $student->name = $data["name"];
+            $student->sid = strtolower($data["sid"]);
+            $student->spass = strtolower($data["spass"]);
+            $student->jp_name = $data["jp_name"];
+            $student->eng_name = $data["eng_name"];
+            $student->email = $data["email"];
+            $student->course = $data["course"];
+            $student->save();
+        }
+        return redirect()->back()->with('message', '会社の登録完了しました。')->with('success', true);
+    }
+    public function getAllStudent()
+    {
+        if (!session()->has('cid')) {
+            return redirect('admin/login');
+        }
+        $id = session()->get('id');
+        $student = Student::orderBy('id')->get();
+        foreach ($student as $value) {
+            $value["enc_id"] = $this->encode($value->id);
+        }
+        return view('admin.student_list', compact('student'));
+        
+    }
+    public function updateCourseAndTicket(Request $request)
+    {
+        if (!session()->has('cid')) {
+            return redirect('admin/login');
+        }
+        $id = session()->get('id');
+
+        $data = $request->all();
+        $student = Student::where('id', $data["id"])->first();
+        if (!$student) {
+            return redirect()->back()->with('message', '既に登録済みです。')->with('success', false);
+        } else {
+            $student->course = $data["course"];
+            $student->ticket = $data["ticket"];
+            $student->update();
+        }
+        return redirect()->back()->with('message', '会社の登録完了しました。')->with('success', true);
+    }
+    public function getStudentHistoryById($ids)
+    {
+        $dec_id = $this->decode($ids);
+        if (!session()->has('cid')) {
+            return redirect('admin/login');
+        }
+        $id = session()->get('id');
+        
+        $student = Student::where('id',$dec_id)->first();
+
+        return view('admin.history', compact('student'));
     }
 }

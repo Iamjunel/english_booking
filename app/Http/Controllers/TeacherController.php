@@ -121,6 +121,11 @@ class TeacherController extends Controller
         $teacher->email = $data["email"];
         $teacher->profile = $data["profile"];
         $teacher->message_students = $data["message_students"];
+        $teacher->message_admin = $data["message_admin"];
+        $teacher->nickname = $data["nickname"];
+        $teacher->beginner = $data["beginner"];
+        $teacher->exam = $data["exam"];
+        $teacher->conversation = $data["conversation"];
         $teacher->update();
 
         $bus_hours = BusinessHours::where('teacher_id', $data["id"])->first();
@@ -261,7 +266,7 @@ class TeacherController extends Controller
 
             if (count($teacher_status) == 0) {
 
-                $status = "circle";
+                $status = "line";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
                 array_push($time, [
@@ -296,7 +301,7 @@ class TeacherController extends Controller
                 }
             } else {
 
-                $status = "circle";
+                $status = "line";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
                 foreach ($teacher_status as $teacher) {
@@ -430,7 +435,7 @@ class TeacherController extends Controller
 
         if (empty($teacher_status)) {
             //default status
-            $status = "circle";
+            $status = "line";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             array_push($time, [
@@ -466,7 +471,7 @@ class TeacherController extends Controller
         } else {
 
             //default status
-            $status = "circle";
+            $status = "line";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             foreach ($teacher_status as $teacher) {

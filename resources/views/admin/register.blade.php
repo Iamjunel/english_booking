@@ -11,7 +11,7 @@
                         <form accept-charset="U+FF66-U+FF9F" action="/admin" method="POST" >
                             @csrf
                             <div class="mb-2">
-                                <label class="form-label">先生の名前:</label>
+                                <label class="form-label">ニックネーム（半角10文字）:</label>
                                 {{-- <input type="tel" name="name" class="form-control .input"   id="exampleInputEmail1" value="" maxlength="5" required/> --}}
                                 <input type="text" name="name" class="form-control .input"  value=""
                                 oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
