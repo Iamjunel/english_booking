@@ -21,14 +21,14 @@
                             <div class="mb-2">
                                 <label class="form-label">ID:</label>
                                {{--  <input type="type" name="cid" class="form-control" id="exampleInputEmail2"  onChange="halfWidth(this)" value=""  required/> --}}
-                               <input type="text" name="tid" class="form-control .input"  value="" maxlength="5"
+                               <input type="text" name="tid" class="form-control .input"  value="" {{-- maxlength="5" --}}
                                oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                required/>
                             </div>
                             <div className="mb-2">
                                 <label class="form-label">パスワード:</label>
-                                <input type="password" name="password" class="form-control" i onChange="halfWidth(this)" value="" 
+                                <input type="password" name="password" class="form-control"  onChange="halfWidth(this)" value="" 
                                 oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                 required/>

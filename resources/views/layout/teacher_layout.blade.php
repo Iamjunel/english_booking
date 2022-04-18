@@ -29,7 +29,7 @@
     <body style="overflow-y:auto;">
     <nav class="container pt-2">
         @if(Session::get('tid'))
-            <a class=" text-dark float-right" href="{{url('teacher/logout')}}">ログアウト</a>
+            <a class=" text-dark float-right" href="{{url('teacher/logout')}}">{{-- ログアウト --}} Logout</a>
         @endif
         {{-- <a href="/care-taxi" class="text-dark" style="text-decoration: none">津ケアタクネット</a> --}}
         <a href="/teacher" class="text-dark" style="text-decoration: none">Think English Learning Center(Teacher)</a>
@@ -166,13 +166,13 @@
                     center: 'title ',
                     right: 'next'
                 },
-                monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                /* monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
                 // 月略称
                 monthNamesShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
                 // 曜日名称
                 dayNames: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'],
                 // 曜日略称
-                dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+                dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'], */
                 views: {
                     month: { // name of view
                     titleFormat: 'YYYY/MM'

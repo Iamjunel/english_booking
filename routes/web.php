@@ -38,7 +38,7 @@ Route::post('admin/student/store', 'App\Http\Controllers\AdminController@storeSt
 Route::get('admin/student', 'App\Http\Controllers\AdminController@getAllStudent');
 Route::post('admin/student/update', 'App\Http\Controllers\AdminController@updateCourseAndTicket');
 Route::get('admin/student/{id}/history', 'App\Http\Controllers\AdminController@getStudentHistoryById');
-
+Route::delete('admin/student/{id}', 'App\Http\Controllers\AdminController@deleteStudentById');
 
 //Routes for the teacher page.
 Route::get('teacher', 'App\Http\Controllers\TeacherController@index');
@@ -51,7 +51,7 @@ Route::get('teacher/booking', 'App\Http\Controllers\TeacherController@availableS
 Route::get('teacher/slot/{id}/{date}', 'App\Http\Controllers\TeacherController@slotDetailDate');
 Route::get('teacher/slot/edit/{id}/{date}', 'App\Http\Controllers\TeacherController@editDetailDate');
 Route::post('teacher/status/update', 'App\Http\Controllers\TeacherController@statusUpdate');
-
+Route::delete('teacher/removeImage/{id}', 'App\Http\Controllers\TeacherController@removeImage');
 //Route for the student page.
 Route::post('student/checklogin', 'App\Http\Controllers\StudentController@checkLogin');
 Route::get('student/logout', 'App\Http\Controllers\StudentController@logout');

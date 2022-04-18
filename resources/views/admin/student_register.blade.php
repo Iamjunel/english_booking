@@ -6,7 +6,7 @@
      <div className="col-md-12 col-sm-12 clearfix">
                     <div class="d-flex">    
                     <a href="/admin" class="text-center text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
-                    <h3 class=" text-center"  style="line-height:1.8">{{-- 講師 --}}学生を登録する</h3>
+                    <h3 class=" text-center"  style="line-height:1.8">{{-- 講師 --}}ユーザーを登録する</h3>
                     </div>
                         <form accept-charset="U+FF66-U+FF9F" action="/admin/student/store" method="POST" >
                             @csrf
@@ -16,7 +16,7 @@
                              <tbody>
                                 <tr>
                                     <td style="width: 100px">ID</td>
-                                    <td><input type="text" name="sid" class="form-control .input"  value="" maxlength="5"
+                                    <td><input type="text" name="sid" class="form-control .input"  value="" {{-- maxlength="5" --}}
                                                 oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
                                                     oninput="this.setCustomValidity('')"
                                                 required/>

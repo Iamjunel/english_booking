@@ -69,43 +69,43 @@ Teachers Profile Page
                                         <td className="p-1 m-0 pb-2" style="width: 400px">
                                             <table>
                                                 <tr>
-                                                    <td style="width: 100px">月曜日</td>
+                                                    <td style="width: 100px">{{-- 月曜日 --}} Mon</td>
                                                     <td><input type="time" name="mon_start" value="{{$bh->monday_start}}" /></td> 
                                                     <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="mon_end" value="{{$bh->monday_end}}"  /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>火曜日</td>
+                                                    <td>{{-- 火曜日 --}} Tue</td>
                                                     <td><input type="time" name="tue_start" value="{{$bh->tuesday_start}}"  /></td> 
                                                     <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time"  name="tue_end" value="{{$bh->tuesday_end}}" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>水曜日</td>
+                                                    <td>{{-- 水曜日 --}} Wed</td>
                                                     <td><input type="time" name="wed_start" value="{{$bh->wednesday_start}}"  /></td>
                                                     <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="wed_end"  value="{{$bh->wednesday_end}}" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>木曜日</td>
+                                                    <td>{{-- 木曜日 --}} Thu</td>
                                                     <td><input type="time" name="thu_start" value="{{$bh->thursday_start}}"  /></td>
                                                     <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="thu_end"  value="{{$bh->thursday_end}}"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>金曜日</td>
+                                                    <td>{{-- 金曜日 --}} Fri</td>
                                                     <td><input type="time" name="fri_start"  value="{{$bh->friday_start}}" /></td>
                                                     <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="fri_end" value="{{$bh->friday_end}}" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>土曜日</td>
+                                                    <td>{{-- 土曜日 --}} Sat</td>
                                                     <td><input type="time" name="sat_start" value="{{$bh->saturday_start}}" /></td>
                                                     <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="sat_end" value="{{$bh->saturday_end}}"   /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>日曜日</td>
+                                                    <td>{{-- 日曜日 --}} Sun</td>
                                                     <td><input type="time" name="sun_start"  value="{{$bh->sunday_start}}" /></td>
                                                     <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="sun_end"   value="{{$bh->sunday_end}}" /></td>
@@ -127,11 +127,11 @@ Teachers Profile Page
 
                                 </tr>
                                 <tr>
-                                        <td className="align-middle">スタッフより</td>
+                                        <td className="align-middle">{{-- スタッフより --}} Strong point</td>
                                         <td className="p-1 m-0 pb-2" style="width: 400px">
                                             <table>
                                                 <tr>
-                                                    <td style="width: 100px">初心者向け</td>
+                                                    <td style="width: 100px">{{-- 初心者向け --}} Beginner</td>
                                                     <td style="width: 300px">                                                        
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input circle" type="radio" name="beginner" id="inlineRadio1" value="circle"
@@ -178,7 +178,7 @@ Teachers Profile Page
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>>試験対策</td>
+                                                    <td>{{-- 試験対策 --}} Exam</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input circle" type="radio" name="exam" id="inlineRadio1" value="circle"
@@ -225,7 +225,7 @@ Teachers Profile Page
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>日常会話</td>
+                                                    <td>{{-- 日常会話 --}} Daily Conversation</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input circle" type="radio" name="conversation" id="inlineRadio1" value="circle"
@@ -308,7 +308,7 @@ Teachers Profile Page
                                                         @csrf
                                                         @method('DELETE')
                                                     <img src="{{ asset('images/'.$value->url) }}" width="100" height="100">
-                                                    <button type="submit" class="btn btn-danger btn-sm mt-1"><i class="fas fa-trash-alt">消去</i></button>
+                                                    <button type="submit" class="btn btn-danger btn-sm mt-1"><i class="fas fa-trash-alt">{{-- 消去 --}}</i></button>
                                                     </form>
                                                 </div>
                                                 @endforeach

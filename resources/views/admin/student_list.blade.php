@@ -16,13 +16,13 @@
         <thead>
             <tr class="text-center">
         
-            <th>ニックネーム<</th>
+            <th>ニックネーム</th>
             <th>ID</th>
             <th>パスワード</th>
              <th>メールアドレス</th>
              <th>コース</th>
-             <th>切符売場</th>
-             
+             <th>チケット数</th>
+             <th></th>
             </tr>
         </thead>
         <tbody>
@@ -45,16 +45,22 @@
                                             oninput="this.setCustomValidity('')"
                                             required/>
                 </td>
-                <td class="px-1 py-2">
-                    <button class="btn btn-info" type="submit">編集</button>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$t->id}}">削除</button>
-                    <a href="/admin/student/{{$t->enc_id}}/history" class="btn btn-primary">歴史</a>
+                <td style="width:150px"><input type="text" name="memo" class="form-control .input"  value="{{$t->memo}}"
+                                            oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                            oninput="this.setCustomValidity('')"
+                                            required/>
                 </td>
-            </form>
+                <td class="px-1 py-2" style="min-width:240px">
+                    <button class="btn btn-info" type="submit">更新</button>
+                    </form>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$t->id}}">削除</button>
+                    <a href="/admin/student/{{$t->enc_id}}/history" class="btn btn-primary">レッスン履歴</a>
+                </td>
+            
             <div class="modal fade" id="sample-{{$t->id}}" tabindex="-1" role="dialog" aria- 
             labelledby="demoModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
-                    <form action="teacher/{{$t->id}}" method="post">
+                    <form action="student/{{$t->id}}" method="post">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="demoModalLabel">{{$t->name}}</h5>

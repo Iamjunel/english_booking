@@ -198,6 +198,7 @@ class AdminController extends Controller
         } else {
             $student->course = $data["course"];
             $student->ticket = $data["ticket"];
+            $student->memo = $data["memo"];
             $student->update();
         }
         return redirect()->back()->with('message', '会社の登録完了しました。')->with('success', true);
@@ -213,5 +214,11 @@ class AdminController extends Controller
         $student = Student::where('id',$dec_id)->first();
 
         return view('admin.history', compact('student'));
+    }
+    public function deleteStudentById($id)
+    {
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->back()->with('message', '会社の削除完了しました。')->with('success', true);
     }
 }

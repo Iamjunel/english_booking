@@ -33,7 +33,8 @@ class TeacherController extends Controller
             $request->session()->save();
             return redirect('/teacher');
         } else {
-            return redirect('teacher/login')->with('message', 'ID又はパスワードの入力に誤りがあります。')->with('success', false);
+            //return redirect('teacher/login')->with('message', 'ID又はパスワードの入力に誤りがあります。')->with('success', false);
+            return redirect('teacher/login')->with('message', 'Incorrect login credentials.')->with('success', false);
         }
     }
 
@@ -186,7 +187,8 @@ class TeacherController extends Controller
         foreach ($current_images as $value) {
             $fileNames[] = $value->url;
         }
-        return redirect()->back()->with('message', '更新完了しました。')->with('success', true);
+        //return redirect()->back()->with('message', '更新完了しました。')->with('success', true);
+        return redirect()->back()->with('message', 'Record updated successfully.')->with('success', true);
     }
     public function availableSlot()
     {
@@ -598,7 +600,15 @@ class TeacherController extends Controller
             }
         }
         //die;
-        return redirect()->back()->with('message', '更新完了しました。')->with('success', true);
+        //return redirect()->back()->with('message', '更新完了しました。')->with('success', true);
+        return redirect()->back()->with('message', 'Status updated successfully.')->with('success', true);
+    }
+
+    public function removeImage($id){
+        $image = TeacherImages::find($id);
+        $image->delete();
+        //return redirect()->back()->with('message', '削除が完了しました。')->with('success', true);
+        return redirect()->back()->with('message', 'Remove image successfully.')->with('success', true);
     }
 
 

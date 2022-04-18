@@ -16,7 +16,7 @@
         <thead>
             <tr>
         
-            <th>名称略</th>
+            <th>ニックネーム</th>
             <th>ID</th>
             <th>パスワード</th>
             <th></th>

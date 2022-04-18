@@ -18,6 +18,7 @@ class Student extends Model
         'jp_name',
         'eng_name',
         'course',
+        'memo',
         'created_at',
         'updated_at'
     ];

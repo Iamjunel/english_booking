@@ -3,14 +3,14 @@
     
    
     <div class="col-md-8 col-sm-12 clearfix mt-1 mb-5">
-     <a href="/teacher/booking" class="pr-1 text-dark float-right">カレンダーに戻る</a>
+     <a href="/teacher/booking" class="pr-1 text-dark float-right">{{-- カレンダーに戻る --}} Return to calendar</a>
     <div class ="d-flex justify-content-between mt-5">
     @if($not_current)    
     <a href="/teacher/slot/edit/{{$enc_id}}/{{$previous_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
     @else
      <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
     @endif
-    <span style="font-size: 20px;line-height:2.1">{{$date_jp}}</span>
+    <span style="font-size: 20px;line-height:2.1">{{-- {{$date_jp}} --}} {{$date}}</span>
     <a href="/teacher/slot/edit/{{$enc_id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
     
     </div>
@@ -33,7 +33,7 @@
             <?php $t["status"] ="times"; ?>
             @endif
             <tr>
-                <td style="width: 100px">{{ date('H:i', strtotime($t["time"]))}}</td>
+                <td style="width: 150px">{{ date('H:i', strtotime($t["time"]))}} ~ {{ date('H:i', strtotime($t["time"]) + 1500 )}}</td>
                 <td style="width: 200px">
                         
                         <div class="form-check form-check-inline">
