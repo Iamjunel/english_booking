@@ -1,4 +1,4 @@
- @extends('layout.teacher_layout')
+ @extends('layout.student_layout')
  @section('content')
  <div class="container ">
      <div class="col-md-10 col-sm-10 clearfix m-3">

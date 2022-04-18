@@ -9,9 +9,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <style>
         .fc-past {
     background-color: rgb(231, 230, 230);
@@ -71,11 +69,11 @@
 <body style="background-color: #f8fafc !important">
     <nav class="container pt-2">
         @if(Session::get('sid'))
-            <a class=" text-dark float-right" href="{{url('student/logout')}}">ログアウト</a>
+            <a class=" text-dark float-right mt-2" href="{{url('student/logout')}}">ログアウト</a>
         @endif
-        <a href="/student" class="text-dark" style="text-decoration: none">{{-- 津ケアタクネット --}} Think English</a>
+        <a href="/student" class="text-dark" >{{-- 津ケアタクネット --}}  <span class="mr-1"><img src="{{ asset('images/logo.svg') }}" width="40" height="40"></span> Think English</a>
     </nav>
-    <hr/>
+    <hr class="mt-0"/>
     <div class="">
        <div class="row justify-content-center pt-2">
             @if(Session::has('message'))
@@ -158,7 +156,7 @@
                     if (check >= today) {
                     //var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
                        var this_day = moment(date, 'DD.MM.YYYY').format('YYYY-MM-DD')
-                 window.location.href = '/user/slot/' + this_day;
+                 window.location.href = '/student/slot/' + this_day;
                     }
                 },
                 views: {
