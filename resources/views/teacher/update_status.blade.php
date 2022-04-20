@@ -100,9 +100,9 @@
     @else 
      <a href="/care-taxi/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-secondary btn-block clearfix mb-1 disabled">{{-- 編集 --}} Update</a>
      <table class="table table-hover table-bordered bg-light" style="margin-bottom: 0px !important">
-            <th>時間</th>
-            <th>空き状況</th>
-            <th>コメント</th>
+            <th>Time</th>
+            <th>Booking Status</th>
+            <th>Comment</th>
         <tbody>           
            </tbody>
         </table>

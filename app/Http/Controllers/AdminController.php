@@ -122,7 +122,7 @@ class AdminController extends Controller
             $company->tpass = strtolower($data["password"]);
             $company->save();
         }
-        return redirect()->back()->with('message', '会社の登録完了しました。')->with('success', true);
+        return redirect()->back()->with('message', '講師の登録完了しました。')->with('success', true);
     }
 
     public function getAllTeacher()
@@ -143,7 +143,7 @@ class AdminController extends Controller
     {
         $company = Teacher::find($id);
         $company->delete();
-        return redirect()->back()->with('message', '会社の削除完了しました。')->with('success', true);
+        return redirect()->back()->with('message', '講師の削除完了しました。')->with('success', true);
     }
     public function studentRegister()
     {
@@ -153,6 +153,8 @@ class AdminController extends Controller
         $id = session()->get('id');
         return view('admin.student_register');
     }
+
+    /* student functions */
     public function storeStudent(Request $request){
         $data = $request->all();
         $student = Student::where('sid', $data["sid"])->first();
@@ -169,7 +171,7 @@ class AdminController extends Controller
             $student->course = $data["course"];
             $student->save();
         }
-        return redirect()->back()->with('message', '会社の登録完了しました。')->with('success', true);
+        return redirect()->back()->with('message', 'ユーザーの登録完了しました。')->with('success', true);
     }
     public function getAllStudent()
     {
@@ -201,7 +203,7 @@ class AdminController extends Controller
             $student->memo = $data["memo"];
             $student->update();
         }
-        return redirect()->back()->with('message', '会社の登録完了しました。')->with('success', true);
+        return redirect()->back()->with('message', '更新完了しました。')->with('success', true);
     }
     public function getStudentHistoryById($ids)
     {
@@ -219,6 +221,6 @@ class AdminController extends Controller
     {
         $student = Student::find($id);
         $student->delete();
-        return redirect()->back()->with('message', '会社の削除完了しました。')->with('success', true);
+        return redirect()->back()->with('message', 'ユーザーの削除完了しました。')->with('success', true);
     }
 }

@@ -65,6 +65,7 @@ Route::get('student/teacher/detail/{id}', 'App\Http\Controllers\StudentControlle
 Route::get('student/history', 'App\Http\Controllers\StudentController@getStudentHistory');
 Route::get('student/profile', 'App\Http\Controllers\StudentController@getStudentInfoById');
 Route::get('student/slot/{date}', 'App\Http\Controllers\StudentController@availableSlotDetailDate');
+Route::get('student/contact/{id}/{date}/{time}/{status}', 'App\Http\Controllers\StudentController@contactDetail');
 //utility routes
 Route::post('multiple-image/store', 'App\Http\Controllers\CompanyImagesController@multipleImageStore')->name('multiple.image.store');
 Route::get('calendar-event', 'App\Http\Controllers\CalenderController@index');

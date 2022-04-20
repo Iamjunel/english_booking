@@ -365,5 +365,42 @@ class StudentController extends Controller
 
         return view('student.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp', 'comp_list', 'this_date'));
     }
+    public function contactDetail($id, $date, $time, $status)
+    {
+
+        if (!session()->has('sid')) {
+            return redirect('student/login');
+        }
+
+        $company = Teacher::with('business_hours')->where('id', $id)->first();
+        if ($company->business_hours == null) {
+            $bh = new stdClass();
+            $bh->monday_start = "";
+            $bh->monday_end = "";
+            $bh->tuesday_start = "";
+            $bh->tuesday_end = "";
+            $bh->wednesday_start = "";
+            $bh->wednesday_end = "";
+            $bh->thursday_start = "";
+            $bh->thursday_end = "";
+            $bh->friday_start = "";
+            $bh->friday_end = "";
+            $bh->saturday_start = "";
+            $bh->saturday_end = "";
+            $bh->sunday_start = "";
+            $bh->sunday_end = "";
+        } else {
+            $bh = $company->business_hours;
+        }
+        $dy = date("w", strtotime($date));
+
+        $dys = array("日", "月", "火", "水", "木", "金", "土");
+        $dyj = $dys[$dy];
+        $company_images = TeacherImages::where('teacher_id', $id)->get();
+        $company_status = TeacherStatus::where('teacher_id', $id)->where('date', $date)->where('time', $time)->orderBy('id', 'desc')->first();
+        $date_jp = date('Y年m月d日', strtotime($date));
+        $date_jp = $date_jp . '(' . $dyj . ')';
+        return view('student.contact_detail', compact('company', 'company_status', 'date_jp', 'date', 'time', 'status', 'bh', 'company_images'));
+    }
     
 }

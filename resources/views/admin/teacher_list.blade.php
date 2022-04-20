@@ -42,7 +42,7 @@
 								</button>
 						</div>
 						<div class="modal-body">
-								<h4>この会社を削除してもよろしいですか？</h4>
+								<h4>この講師を削除してもよろしいですか？</h4>
 						</div>
 						<div class="modal-footer">
                             @method('DELETE')

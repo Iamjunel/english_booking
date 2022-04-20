@@ -8,7 +8,7 @@
      <div class="col-md-12 col-sm-12 clearfix">
          <div class="d-flex justify-content-between ">    
          <a href="/admin" class=" text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
-        <h3 class="text-center" style="line-height: 1.85">講師一覧</h3>
+        <h3 class="text-center" style="line-height: 1.85">ユーザー一覧</h3>
         {{-- new registration --}}
         <a href="/admin/register" class="btn btn-light text-dark border-dark pb-0 mb-3 " style="line-height: 2.1;visibility:hidden">新規登録</a>
          </div>
@@ -22,7 +22,7 @@
              <th>メールアドレス</th>
              <th>コース</th>
              <th>チケット数</th>
-             <th></th>
+             <th>備考</th>
             </tr>
         </thead>
         <tbody>
@@ -70,7 +70,7 @@
 								</button>
 						</div>
 						<div class="modal-body">
-								<h4>この会社を削除してもよろしいですか？</h4>
+								<h4>このユーザー を削除してもよろしいですか？</h4>
 						</div>
 						<div class="modal-footer">
                             @method('DELETE')

@@ -58,7 +58,7 @@ Teachers Profile Page
                                         <td><input type="email" name="email" value="{{$teacher->email}}" onChange="halfWidth(this)" /></td>
 
                                 </tr>
-                                <tr>
+                                <tr style="display:none">
                                     {{-- profile --}}
                                     <td>{{-- プロフィール --}} Profile</td>
                                         <td><textarea name="profile" rows="4" cols="50" >{{$teacher->profile}}</textarea></td>
@@ -122,7 +122,7 @@ Teachers Profile Page
 
                                 </tr>
                                 <tr>
-                                    <td>Message to Staff</td>
+                                    <td>Message from Staff</td>
                                         <td><textarea name="message_admin" rows="4" cols="50" >{{$teacher->message_admin}}</textarea></td>
 
                                 </tr>

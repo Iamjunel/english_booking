@@ -17,7 +17,7 @@
     
     </div>
     @if(count($time)>1)
-    <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-primary btn-block clearfix mb-1">編集</a>
+    <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-primary btn-block clearfix mb-1">Edit</a>
     <form action="/teacher/company/update/"  method="POST" >
         @csrf
         
@@ -25,7 +25,7 @@
         <input type="hidden" name="id" value="{{$teacher->id}}" /></td>
         <table class="table table-hover table-bordered bg-light" style="margin-bottom: 0px !important">
             <th>Time</th>
-            <th>Booking Status </th>
+            <th>Availability</th>
             <th>Comment</th>
         <tbody>
             @foreach ($time as $key => $t)
@@ -74,9 +74,9 @@
            </tbody>
         </table>
     </form>
-     <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-primary btn-block clearfix mt-1">{{-- 編集 --}} Update</a>
+     <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-primary btn-block clearfix mt-1">{{-- 編集 --}} Edit</a>
      @else 
-     <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-secondary btn-block clearfix mb-1 disabled">{{-- 編集 --}} Update</a>
+     <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-secondary btn-block clearfix mb-1 disabled">{{-- 編集 --}} Edit</a>
      <table class="table table-hover table-bordered bg-light" style="margin-bottom: 0px !important">
             <th>{{-- 時間 --}} Time</th>
             <th>{{-- 空き状況 --}} Availability</th>
@@ -84,7 +84,7 @@
         <tbody>           
            </tbody>
         </table>
-         <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-secondary btn-block clearfix mb-1 disabled">{{-- 編集 --}} Update</a>
+         <a href="/teacher/slot/edit/{{$enc_id}}/{{$date}}" class="btn btn-secondary btn-block clearfix mb-1 disabled">{{-- 編集 --}} Edit</a>
      @endif
      
      </div>
