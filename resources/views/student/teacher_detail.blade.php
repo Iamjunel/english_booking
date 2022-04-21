@@ -6,7 +6,7 @@
          <div class="d-flex justify-content-between align-items-center px-0 ">
             <a href="/student" class=" text-dark "><i class="fas fa-3x fa-caret-left text-secondary"></i> </a>
             <h3 class="clearfix" >{{$teacher->name}}</h3>
-            <a href="/user/slot/detail/{{$teacher->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="btn btn-danger align-middle ">空き状況を見る</a>
+            <a href="/student/slot/detail/{{$teacher->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="btn btn-danger align-middle ">空き状況を見る</a>
         </div>
         <div class="row border ">
             @if(empty($teacher_images))

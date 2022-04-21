@@ -16,13 +16,13 @@
             </tr>
         </thead>
         <tbody >
-            @if($teacher)
-                @foreach ($teacher as $t)
+            @if($booked)
+                @foreach ($booked as $t)
                 
                 <tr>
-                <td style="vertical-align:middle">{{$t->name}}</td>
+                <td style="vertical-align:middle;width:50%">{{$t->date_jp}}({{ date('H:i', strtotime($t->time))}} ~ {{ date('H:i', strtotime($t->time) + 1500 )}})</td>
                 
-                <td style="vertical-align:middle"><a class="btn btn-danger" href="/student/teacher/detail/{{$t->enc_id}}">詳細</a></td>
+                <td style="vertical-align:middle;width:50%">{{$t->name}}</td>
                 </tr>
                 
                 @endforeach

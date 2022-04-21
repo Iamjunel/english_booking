@@ -45,10 +45,7 @@
                                             oninput="this.setCustomValidity('')"
                                             required/>
                 </td>
-                <td style="width:150px"><input type="text" name="memo" class="form-control .input"  value="{{$t->memo}}"
-                                            oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
-                                            oninput="this.setCustomValidity('')"
-                                            required/>
+                <td style="width:150px"><input type="text" name="memo" class="form-control .input"  value="{{$t->memo}}"/>
                 </td>
                 <td class="px-1 py-2" style="min-width:240px">
                     <button class="btn btn-info" type="submit">更新</button>

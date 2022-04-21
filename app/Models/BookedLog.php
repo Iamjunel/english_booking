@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class BookedLog extends Model
 {
     use HasFactory;
 
-    protected $table = 'student';
+    protected $table = 'booked_logs';
     protected $fillable = [
         'sid',
         'spass',
@@ -22,8 +22,8 @@ class Student extends Model
         'created_at',
         'updated_at'
     ];
-    public function booked()
+    public function student()
     {
-        return $this->hasMany('App\Models\BookedLog', 'student_id');
+        return $this->belongsTo('App\Models\Student', 'id');
     }
 }

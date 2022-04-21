@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Teacher;
 use App\Models\Student;
+use App\Models\BookedLog;
 class AdminController extends Controller
 {
 
@@ -213,9 +214,18 @@ class AdminController extends Controller
         }
         $id = session()->get('id');
         
-        $student = Student::where('id',$dec_id)->first();
+        $booked = BookedLog::where('student_id', $dec_id)->get();
+        if($booked){
+           // $booked = BookedLog::where('student_id', $student->id)->get();
+            foreach ($booked as $key => $value) {
+                $teacher = Teacher::where('id', $value->teacher_id)->first();
+                $value["name"] = $teacher->name;
+                $value["date_jp"] = date('Y年m月d日', strtotime($value->date)); 
+            }
+        }
+        
 
-        return view('admin.history', compact('student'));
+        return view('admin.history', compact('booked'));
     }
     public function deleteStudentById($id)
     {
