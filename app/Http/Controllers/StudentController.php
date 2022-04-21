@@ -321,7 +321,7 @@ class StudentController extends Controller
             $name = 'status_' . $com_list->id;
             $com_list["enc_id"] = $this->encode($com_list->id);
             foreach ($time as $t) {
-                if (isset($t[$name]) && $t[$name] == 'circle') {
+                if (isset($t[$name]) && ($t[$name] == 'circle' || $t[$name] == 'times' )) {
                     $comp_list[] = $com_list;
                     break;
                 }
