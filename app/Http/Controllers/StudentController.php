@@ -66,10 +66,10 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request){
-
+    
         $data = $request->all();
         $student = Student::where('id', $data["id"])->first();
-        $student->name = $data["name"];
+        $student->spass = $data["spass"];
         $student->sid = $data["sid"];
         $student->email = $data["email"];
         $student->jp_name = $data["jp_name"];
@@ -371,13 +371,14 @@ class StudentController extends Controller
         $company_images = TeacherImages::where('teacher_id', $id)->get();
         $company_status = TeacherStatus::where('teacher_id', $id)->where('date', $date)->where('time', $time)->orderBy('id', 'desc')->first();
         $date_jp = date('Y年m月d日', strtotime($date));
+        $date_jpm = date('m月d日', strtotime($date));
         $date_jp = $date_jp . '(' . $dyj . ')';
         $teacher = $company;
         $teacher_images = $company_images;
         $student = Student::where('sid',$sid)->first();
         $checked_booked = BookedLog::where('student_id', $student->id)->where('teacher_id', $id)->where('date', $date)->where('time', $time)->first();
         $is_booked = $checked_booked ? true : false;
-        return view('student.contact_detail', compact('company', 'company_status', 'date_jp', 'date', 'time', 'status', 'bh', 'company_images','teacher','teacher_images','is_booked'));
+        return view('student.contact_detail', compact('company', 'company_status', 'date_jp', 'date', 'time', 'status', 'bh', 'company_images','teacher','teacher_images','is_booked','date_jpm'));
     }
 
     public function storeBooked(Request $request)
@@ -433,7 +434,7 @@ class StudentController extends Controller
             $booked->save();
 
        
-        return redirect($location)->with('message', '先生の予約に成功しました。')->with('success', true);
+        return redirect($location)->with('message', '予約が完了しました。')->with('success', true);
     }
 
     public function slotDetailDate($id, $date = null)

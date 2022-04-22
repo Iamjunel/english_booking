@@ -71,7 +71,7 @@
         @if(Session::get('sid'))
             <a class=" text-dark float-right mt-2" href="{{url('student/logout')}}">ログアウト</a>
         @endif
-        <a href="/student" class="text-dark" >{{-- 津ケアタクネット --}}  <span class="mr-1"><img src="{{ asset('images/logo.svg') }}" width="40" height="40"></span> Think English</a>
+        <a href="/student" class="text-dark" >{{-- 津ケアタクネット --}}  <span class="mr-1"><img src="{{ asset('images/logo.svg') }}" width="40" height="40"></span> Think English Learning Center</a>
     </nav>
     <hr class="mt-0"/>
     <div class="">

@@ -21,8 +21,8 @@
      <div class="row">
          <div class="container col-md-12 col-sm-12 ">
             <div class="col-md-12 col-sm-12 border mb-1 text-center"> 
-                <h4 class="text-center text-danger">スタッフより {{-- <br/> 車椅子　リクライニング車椅子　ストレッチャー --}}</h4>   
-            <div class="row"> 
+                {{-- <h4 class="text-center text-danger">スタッフより</h4>   --}} 
+            <div class="row mt-3"> 
                 <div class="container col-md-12  d-flex justify-content-center mb-2"> 
                      <span class="mr-5"><img src="{{ asset('images/syoshinsya.svg') }}" width="25" height="25"> -- 初心者向け</span>
                      <span class="mr-5"><img src="{{ asset('images/shikentaisaku.svg') }}" width="25" height="25"> -- 試験対策</span>

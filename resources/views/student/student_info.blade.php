@@ -28,7 +28,7 @@ Teachers Profile Page
                                 </tr>
                                 <tr>
                                     <td>パスワード </td>
-                                        <td><input type="text" name="name" class="form-control" i onChange="halfWidth(this)" value="{{$student->name}}" 
+                                        <td><input type="password" name="spass" class="form-control" i onChange="halfWidth(this)" value="{{$student->spass}}" 
                                         oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
                                         oninput="this.setCustomValidity('')"
                                         required/>
@@ -61,7 +61,7 @@ Teachers Profile Page
                                 </tr>
                                  <tr>
                                     <td>コース {{--  〇〇コース --}}</td>
-                                        <td><input type="text" name="course" class="form-control .input"  value="〇〇コース"
+                                        <td><input type="text" name="course" class="form-control .input"  value="{{$student->course}}"
                                         oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
                                         oninput="this.setCustomValidity('')"
                                         disabled/></td>

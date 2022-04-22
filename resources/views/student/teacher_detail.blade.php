@@ -50,24 +50,27 @@
                     </tr>
                     <tr>
                         <td style="width: 100px">講師名</td>
-                        <td>{{$teacher->nickname}}</td>
+                        <td>{{$teacher->name}}</td>
                     </tr>
                     <tr>
                         <td>ニックネーム</td>
-                        <td>{{-- {{$teacher->profile}} --}} <span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$teacher->message_students}}</pre></span></td>
+                        <td>{{$teacher->nickname}}</td>
                     </tr>
                     <tr>
                         <td>メッセージ</td>
-                        <td>{{-- {{$teacher->profile}} --}} <span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$teacher->message_admin}}</pre></span></td>
+                        <td>{{-- {{$teacher->profile}} --}} <span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$teacher->message_students}}</pre></span></td>
                     </tr>
         
                                 <tr>
-                                        <td className="align-middle">スタッフより</td>
-                                        <td className="p-1 m-0 pb-2" style="width: 400px">
+                                        <td class="align-middle">スタッフより</td>
+                                        <td class="p-1 m-0 pb-2" style="width: 400px">
                                             <table>
                                                 <tr>
-                                                    <td style="width: 100px">初心者向け</td>
-                                                    <td style="width: 300px">
+                                                    <td colspan="2" class="text-center" style="width: 100px">得意分野</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 50%">初心者向け</td>
+                                                    <td style="width: 50%">
                                                         
                                                         @if($teacher->beginner == 'circle')
                                                         <div class="form-check form-check-inline">
@@ -105,8 +108,8 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>>試験対策</td>
-                                                    <td style="width: 300px">
+                                                    <td>試験対策</td>
+                                                    <td style="width: 50%">
                                                         @if($teacher->exam== 'circle')
                                                         <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="inlineRadio1">

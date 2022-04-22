@@ -4,13 +4,13 @@
      <div class="col-md-12 col-sm-12 clearfix">  
          <div class=""> 
          <a href="/student" class=" text-dark pr-1 " style="font-size: 21px;vertical-align: sub;"><i class="fas fa-2x fa-caret-left text-secondary"></i></a> 
-         <span class="h3 text-center" style="margin-left:36%;vertical-align: text-bottom;">登録会社一覧</span>
+         <span class="h3 text-center" style="margin-left:36%;vertical-align: text-bottom;">講師一覧</span>
          </div>
          <table class="table table-striped table-hover table-bordered text-center ">
         <thead >
             <tr >
         
-            <th class="text-center" style="vertical-align:middle">会社名</th>
+            <th class="text-center" style="vertical-align:middle">講師名</th>
             <th class="text-center" style="vertical-align:middle">初心者向け {{-- beginner --}}</th>
             <th class="text-center" style="vertical-align:middle">試験対策 {{-- exam --}}</th>
             <th class="text-center" style="vertical-align:middle">日常会話 {{-- daily conversation --}}</th>

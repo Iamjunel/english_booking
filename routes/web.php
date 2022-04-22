@@ -60,7 +60,7 @@ Route::get('student', 'App\Http\Controllers\StudentController@index');
 Route::get('student/slot', 'App\Http\Controllers\StudentController@availableSlot');
 Route::get('student/teacherlist', 'App\Http\Controllers\StudentController@getAllTeacher');
 Route::get('student/edit/{id}', 'App\Http\Controllers\TeacherController@edit');
-Route::post('student/update', 'App\Http\Controllers\TeacherController@update');
+Route::post('student/update', 'App\Http\Controllers\StudentController@update');
 Route::get('student/teacher/detail/{id}', 'App\Http\Controllers\StudentController@getTeacherDetail');
 Route::get('student/history', 'App\Http\Controllers\StudentController@getStudentHistory');
 Route::get('student/profile', 'App\Http\Controllers\StudentController@getStudentInfoById');
