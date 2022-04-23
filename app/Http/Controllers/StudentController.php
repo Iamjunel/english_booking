@@ -432,8 +432,11 @@ class StudentController extends Controller
             $booked->date = $date;
             $booked->time = $time;
             $booked->save();
-
-       
+        $teacher = Teacher::where('id',$tid)->first();
+        $time = date('H:i', strtotime($time)).'~'. date('H:i', strtotime($time) + 1500 );
+        $this->sendStudentEmail($student->email,$time,$teacher->name);
+        $this->sendTeacherEmail($teacher->email, $time, $teacher->name);
+        $this->sendAdminEmail($student->email, $time, $teacher->name);
         return redirect($location)->with('message', '予約が完了しました。')->with('success', true);
     }
 

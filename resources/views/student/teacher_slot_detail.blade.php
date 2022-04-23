@@ -6,12 +6,12 @@
         <a href="/student/teacherlist" class="pr-1 text-dark float-right">会社リストに戻る</a>
         <div class ="d-flex justify-content-between mt-5">
         @if($not_current)    
-        <a href="/user/slot/detail/{{$id}}/{{$previous_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
+        <a href="/student/slot/detail/{{$id}}/{{$previous_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
         @else
         <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
         @endif
         <span style="font-size: 20px;line-height:1.9">{{$date_jp}} <span style="font-size:22px;font-weight:600;font-family: emoji">~</span> {{$date_jp_w}}</span>
-        <a href="/user/slot/detail/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
+        <a href="/student/slot/detail/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
         
     </div>
     <h3 class="text-center">{{$com->name}}</h3>
