@@ -120,6 +120,7 @@ class TeacherController extends Controller
         $teacher->tid = $data["tid"];
         $teacher->tpass = $data["tpass"];
         $teacher->email = $data["email"];
+        $teacher->zoom_link = $data["zoom_link"];
         /* $teacher->profile = $data["profile"]; */
         $teacher->message_students = $data["message_students"];
         $teacher->message_admin = $data["message_admin"];

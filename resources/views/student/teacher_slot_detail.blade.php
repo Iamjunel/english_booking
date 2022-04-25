@@ -3,7 +3,7 @@
  
      
     <div class="col-md-8 col-sm-12 clearfix mt-1 mb-5">
-        <a href="/student/teacherlist" class="pr-1 text-dark float-right">会社リストに戻る</a>
+        <a href="/student/teacherlist" class="pr-1 text-dark float-right">講師リストに戻る</a>
         <div class ="d-flex justify-content-between mt-5">
         @if($not_current)    
         <a href="/student/slot/detail/{{$id}}/{{$previous_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>

@@ -16,6 +16,7 @@ class Teacher extends Model
         'name',
         'email',
         'profile',
+        'zoom_link',
         'message_students',
         'created_at',
         'updated_at'

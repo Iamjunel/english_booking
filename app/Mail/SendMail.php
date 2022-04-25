@@ -30,7 +30,7 @@ class SendMail extends Mailable
     public function build()
     {
         $record = $this->details;
-        return $this->from('englishbooking01@gmail.com', $record["subject"])
+        return $this->from('thinkenglish01@gmail.com', $record["subject"])
         ->subject($record["subject"])
         ->view('student.mail', compact('record'));
     }

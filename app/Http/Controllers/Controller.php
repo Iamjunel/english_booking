@@ -61,7 +61,8 @@ class Controller extends BaseController
                 'subject' => 'Think English Learning Center',
                 'teacher_name' => $teacher_name,
                 'time' => $time,
-                'zoom'   => $zoom
+                'zoom'   => $zoom,
+                'user'   => 'student'
             ];
             Mail::to($to)->send(new \App\Mail\SendMail($details));
             //return back()->with('success_mail', 'Eメールが送信されました。');
@@ -79,7 +80,8 @@ class Controller extends BaseController
                 'subject' => 'Think English Learning Center',
                 'teacher_name' => $teacher_name,
                 'time' => $time,
-                'zoom'   => $zoom
+                'zoom'   => $zoom,
+                'user'   => 'teacher'
             ];
             Mail::to($to)->send(new \App\Mail\SendMail($details));
             //return back()->with('success_mail', 'Eメールが送信されました。');
@@ -89,14 +91,16 @@ class Controller extends BaseController
     {
         $check_email = $this->validate_email($email);
         if ($check_email) {
-            $to = "englishbooking01@gmail.com";
+            //$to = "thinkenglish01@gmail.com";
+            $to = "think.english.learning.center@gmail.com";
             $message = "Admin Booking Lesson Details.";
             $details = [
                 'body' =>  $message,
                 'subject' => 'Think English Learning Center',
                 'teacher_name' => $teacher_name,
                 'time' => $time,
-                'zoom'   => $zoom
+                'zoom'   => $zoom,
+                'user'   => 'admin'
             ];
             Mail::to($to)->send(new \App\Mail\SendMail($details));
             //return back()->with('success_mail', 'Eメールが送信されました。');

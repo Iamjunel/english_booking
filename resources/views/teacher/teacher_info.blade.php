@@ -58,6 +58,11 @@ Teachers Profile Page
                                         <td><input type="email" name="email" value="{{$teacher->email}}" onChange="halfWidth(this)" /></td>
 
                                 </tr>
+                                <tr>
+                                    <td>Lesson URL</td>
+                                        <td><input type="text" name="zoom_link" value="{{$teacher->zoom_link}}" size="50" /></td>
+
+                                </tr>
                                 <tr style="display:none">
                                     {{-- profile --}}
                                     <td>{{-- プロフィール --}} Profile</td>

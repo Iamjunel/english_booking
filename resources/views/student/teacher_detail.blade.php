@@ -62,12 +62,10 @@
                     </tr>
         
                                 <tr>
-                                        <td class="align-middle">スタッフより</td>
+                                        <td class="align-middle">得意分野</td>
                                         <td class="p-1 m-0 pb-2" style="width: 400px">
                                             <table>
-                                                <tr>
-                                                    <td colspan="2" class="text-center" style="width: 100px">得意分野</td>
-                                                </tr>
+                                                
                                                 <tr>
                                                     <td style="width: 50%">初心者向け</td>
                                                     <td style="width: 50%">
