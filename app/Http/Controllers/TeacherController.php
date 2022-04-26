@@ -229,7 +229,7 @@ class TeacherController extends Controller
         $teacher = Teacher::with('business_hours')->where('id', $id)->first();
         $previous_date =  date('Y-m-d', strtotime($date . ' -1 day'));
         $next_date = date('Y-m-d', strtotime($date . ' +1 day'));
-
+        $has_no_schedule = 0;
         if ($teacher->business_hours) {
             $bus_hours = $teacher->business_hours;
             $day = date('l', strtotime($date));
@@ -237,7 +237,7 @@ class TeacherController extends Controller
             $time_end = "23:30"; */
             $time_start = null;
             $time_end = null;
-            $has_no_schedule = 0;
+            
             if ($day == "Monday") {
                 $time_start = $bus_hours->monday_start;
                 $time_end = $bus_hours->monday_end;
@@ -392,6 +392,7 @@ class TeacherController extends Controller
                 return redirect('teacher/login');
             }
         }
+        $has_no_schedule = false;
         $enc_id = $id;
         $id = $this->decode($id);
         $teacher = Teacher::with('business_hours')->where('id', $id)->first();
@@ -402,7 +403,7 @@ class TeacherController extends Controller
         $time = array();
         $time_start = null;
         $time_end = null;
-        $has_no_schedule = false;
+       
         if (
             $day == "Monday"
         ) {

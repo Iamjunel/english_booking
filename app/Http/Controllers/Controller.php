@@ -50,7 +50,7 @@ class Controller extends BaseController
             return back()->with('success_mail', 'Eメールが送信されました。');
        
     }
-    public function sendStudentEmail($email,$time,$teacher_name,$zoom="")
+    public function sendStudentEmail($s_name,$email,$time,$teacher_name,$zoom="")
     {
         $check_email = $this->validate_email($email);
         if($check_email){
@@ -62,7 +62,8 @@ class Controller extends BaseController
                 'teacher_name' => $teacher_name,
                 'time' => $time,
                 'zoom'   => $zoom,
-                'user'   => 'student'
+                'user'   => 'student',
+                'student_name' => $s_name
             ];
             Mail::to($to)->send(new \App\Mail\SendMail($details));
             //return back()->with('success_mail', 'Eメールが送信されました。');
@@ -103,6 +104,44 @@ class Controller extends BaseController
                 'user'   => 'admin'
             ];
             Mail::to($to)->send(new \App\Mail\SendMail($details));
+            //return back()->with('success_mail', 'Eメールが送信されました。');
+        }
+    }
+
+    //send email reminder to student and to teacher.
+    public function sendReminderStudentEmail($email, $time, $teacher_name, $zoom = "")
+    {
+        $check_email = $this->validate_email($email);
+        if ($check_email) {
+            $to = $email;
+            $message = "Booking Lesson Details.";
+            $details = [
+                'body' =>  $message,
+                'subject' => 'Think English Learning Center',
+                'teacher_name' => $teacher_name,
+                'time' => $time,
+                'zoom'   => $zoom,
+                'user'   => 'student'
+            ];
+            Mail::to($to)->send(new \App\Mail\SendReminderMail($details));
+            //return back()->with('success_mail', 'Eメールが送信されました。');
+        }
+    }
+    public function sendReminderTeacherEmail($email, $time, $teacher_name, $zoom = "")
+    {
+        $check_email = $this->validate_email($email);
+        if ($check_email) {
+            $to = $email;
+            $message = "Teacher Booking Lesson Details.";
+            $details = [
+                'body' =>  $message,
+                'subject' => 'Think English Learning Center',
+                'teacher_name' => $teacher_name,
+                'time' => $time,
+                'zoom'   => $zoom,
+                'user'   => 'teacher'
+            ];
+            Mail::to($to)->send(new \App\Mail\SendReminderMail($details));
             //return back()->with('success_mail', 'Eメールが送信されました。');
         }
     }

@@ -146,8 +146,27 @@ class StudentController extends Controller
 
         }
         $day = strtolower(date('l'));
-        $student = Student::with('booked')->where('sid', $sid)->first();
 
+
+        $student = Student::all();
+        foreach($student as $s){
+            $ldate = date('Y-m-d H:i:s');
+            $curr = date('Y-m-d');
+            $booked = BookedLog::where('student_id', $s->id)->where('date', $curr)->get();
+            if(!empty($booked)){
+                foreach($booked as $b){
+                    $hour_time=date("H", strtotime("$b->time"));
+                    $current_hour_time = date("H", strtotime("$ldate"));
+                    $hour_gap = $hour_time - $current_hour_time;
+                    if($hour_gap == 1){
+                        var_dump('sendmail');
+                    }
+
+                }
+            }
+        }
+        
+        die;
         $booked = BookedLog::where('student_id', $student->id)->get();
         if ($booked) {
             // $booked = BookedLog::where('student_id', $student->id)->get();
@@ -436,8 +455,8 @@ class StudentController extends Controller
         $ts   = strtotime($date);
         $time = date('Y/m/d (D)', $ts) ."".date('H:i', strtotime($time)).'~'. date('H:i', strtotime($time) + 1500 );
 
-        $this->sendStudentEmail($student->email,$time,$teacher->name,$teacher->zoom_link);
-        $this->sendTeacherEmail($teacher->email, $time, $teacher->name,$teacher->zoom_link);
+        $this->sendStudentEmail($student->name,$student->email,$time,$teacher->name,$teacher->zoom_link);
+        $this->sendTeacherEmail($teacher->email, $time, $teacher->tid,$teacher->zoom_link);
         $this->sendAdminEmail($student->email, $time, $teacher->name,$teacher->zoom_link);
 
         return redirect($location)->with('message', '予約が完了しました。')->with('success', true);

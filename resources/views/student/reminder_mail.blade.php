@@ -2,11 +2,11 @@
 <html>
 <body>
     @if($record['user'] == "student")
-    <p>title:【予約完了】 Think English Learning Center レッスン予約完了のお知らせ</p>
+    <p>tittle:【レッスン1時間前のお知らせ】 Think English Learning Center</p>
     <hr/>
     <p>{{ $record['student_name'] }}様<br/>
        Think English Learning Centerをご利用いただきありがとうございます。</p>
-    <p>以下の内容にてレッスン予約が完了いたしましたのでご連絡いたします。</p>
+    <p>レッスンの1時間前になりましたので、ご連絡いたします</p>
    
 
     <p>予約内容<br/>    
@@ -29,18 +29,21 @@
     <p>メールアドレス: 	think.english.learning.center@gmail.com<br/>    
        Think English Learning Center</p>
 
-
-
     @endif
+
+
     @if($record['user'] == "teacher")
-    <p>title:【Booking Completion】 Think English Learning Center </p>
+    <p>title:【You will have a student  in 1 hour】 Think English Learning Center </p>
     <p>---------------------------------------------------------------</p>    
     <p>Date : {{ $record['time'] }}<br/>
        User : {{ $record['teacher_name'] }}</p>
     <p>Lesson URL : {{ $record['zoom'] }}</p>
     <p></p>
     @endif
-    @if($record['user'] == "admin")
+
+
+
+    {{-- @if($record['user'] == "admin")
     <p>title: 【予約完了】 Think English Learning Center</p>
     <p>---------------------------------------------------------------</p>
     <p>予約內容</p>    
@@ -50,6 +53,6 @@
 
     <p>レッスンURL: {{ $record['zoom'] }}</p>
     <p></p>
-    @endif
+    @endif --}}
 </body>
 </html>
