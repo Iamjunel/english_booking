@@ -70,7 +70,7 @@
             <tr class="{{(idate('H', strtotime($t["time"])) < 8)? 'hide-slot' : ''}}"
                 @foreach ($comp_list as $com1)
                      @if(isset($t["status_".$com1->id]))
-                     @if($t["status_".$com->id] == "times")
+                     @if($t["status_".$com1->id] == "times")
                      <?php $disabled = "return false"; 
                      break;
                      ?>
