@@ -148,7 +148,7 @@ class StudentController extends Controller
         $day = strtolower(date('l'));
 
 
-        $student = Student::all();
+        /*  
         foreach($student as $s){
             $ldate = date('Y-m-d H:i:s');
             $curr = date('Y-m-d');
@@ -164,9 +164,10 @@ class StudentController extends Controller
 
                 }
             }
-        }
-        
-        die;
+        } */
+
+        // die;
+        $student = Student::Where('sid', $sid)->first();
         $booked = BookedLog::where('student_id', $student->id)->get();
         if ($booked) {
             // $booked = BookedLog::where('student_id', $student->id)->get();
