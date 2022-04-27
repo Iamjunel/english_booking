@@ -456,7 +456,7 @@ class StudentController extends Controller
         $ts   = strtotime($date);
         $time = date('Y/m/d (D)', $ts) ."".date('H:i', strtotime($time)).'~'. date('H:i', strtotime($time) + 1500 );
 
-        $this->sendStudentEmail($student->name,$student->email,$time,$teacher->name,$teacher->zoom_link);
+        $this->sendStudentEmail($student->name,$student->email,$time, $student->sid,$teacher->zoom_link);
         $this->sendTeacherEmail($teacher->email, $time, $teacher->tid,$teacher->zoom_link);
         $this->sendAdminEmail($student->email, $time, $teacher->name,$teacher->zoom_link);
 
@@ -472,7 +472,6 @@ class StudentController extends Controller
         if ($date == null) {
             $date = date('Y-m-d');
         }
-
         $company = Teacher::with('business_hours')->where('id', $id)->first();
 
         $previous_date =  date('Y-m-d', strtotime($date . ' -7 day'));
@@ -481,8 +480,8 @@ class StudentController extends Controller
             $bus_hours = $company->business_hours;
             $day = date('l', strtotime($date));
             $time = array();
-            $time_start = null;
-            $time_end = null;
+            $time_start = "10:00";
+            $time_end = "23:30";
             /*  $time_start = "";
             $time_end = "23:30"; */
             //get the earliest time
@@ -642,7 +641,7 @@ class StudentController extends Controller
 
                             $time[$count]["status_" . $curr_date] = $company_status->status;
                         } else {
-                            $time[$count]["status_" . $curr_date] = 'circle';
+                            $time[$count]["status_" . $curr_date] = 'line';
                         }
                     } else {
                         $time[$count]["status_" . $curr_date] = 'line';

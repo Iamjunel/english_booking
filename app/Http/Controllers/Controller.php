@@ -35,21 +35,7 @@ class Controller extends BaseController
         }
         return $val / 100000;
     }
-    public function sendEmail()
-    {
-
-        
-            $to = "junelidano@gmail.com";
-            $message = "Testing";
-            $details = [
-                'title' => 'Mail from English Booking.',
-                'body' =>  $message,
-                'subject' => 'StateNote Web Support'
-            ];
-            Mail::to($to)->send(new \App\Mail\SendMail($details));
-            return back()->with('success_mail', 'Eメールが送信されました。');
-       
-    }
+   
     public function sendStudentEmail($s_name,$email,$time,$teacher_name,$zoom="")
     {
         $check_email = $this->validate_email($email);
@@ -93,7 +79,7 @@ class Controller extends BaseController
         $check_email = $this->validate_email($email);
         if ($check_email) {
             //$to = "thinkenglish01@gmail.com";
-            $to = "think.english.learning.center@gmail.com";
+            $to = "thinkenglish01@gmail.com";
             $message = "Admin Booking Lesson Details.";
             $details = [
                 'body' =>  $message,

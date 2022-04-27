@@ -27,7 +27,8 @@
               <th>{{date('m/d',strtotime('+6days',strtotime($date)))}}日</th>
         <tbody>
             @foreach ($time as $key => $t)
-            <tr>
+            
+            <tr class="{{(idate('H', strtotime($t["time"])) < 10)? 'hide-slot' : ''}}">
                 <td style="width: 100px">{{-- {{ date('H:i', strtotime($t["time"]))}} --}} {{ date('H:i', strtotime($t["time"]))}}  ~ {{ date('H:i', strtotime($t["time"]) + 1500 )}}</td>
                 @for($day = 0; $day < 7;$day++)
                     @if($day > 0)
@@ -69,6 +70,7 @@
                 
                 
             </tr>
+            
             @endforeach
            
            </tbody>

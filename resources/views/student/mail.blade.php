@@ -26,7 +26,7 @@
        ※このメールに関して心当たりのない方はお手数ではございますが、 以下までお問い合わ <br/>
       せください。 </p>
     
-    <p>メールアドレス: 	think.english.learning.center@gmail.com<br/>    
+    <p>メールアドレス: 	thinkenglish01@gmail.com<br/>    
        Think English Learning Center</p>
 
 
