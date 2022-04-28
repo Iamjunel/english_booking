@@ -33,7 +33,7 @@
                                     <input type="hidden" name="date" value="{{$date}}" />
                                     <input type="hidden" name="time" value="{{$time}}" />
                                      <input type="hidden" name="action" value="delete" />
-                                    <input type="submit" class="btn btn-primary" value="はい" />
+                                    <input type="submit" class="btn btn-primary" value="はい" onclick="this.form.submit(); this.disabled = true;" />
 
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
                                 </div>
@@ -63,9 +63,9 @@
                                     <input type="hidden" name="tid" value="{{$teacher->id}}" />
                                     <input type="hidden" name="date" value="{{$date}}" />
                                     <input type="hidden" name="time" value="{{$time}}" />
-                                    <input type="submit" class="btn btn-primary" value="はい" />
+                                    <input type="submit" class="btn btn-primary" value="はい" onclick="this.form.submit(); this.disabled = true;"/>
 
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                                    <button type="button" class="btn btn-secondary " data-dismiss="modal">キャンセル</button>
                                 </div>
                             </div>
                             </form>
@@ -219,6 +219,10 @@
                     <tr>
                         <td>メッセージ</td>
                         <td>{{-- {{$teacher->profile}} --}} <span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$teacher->message_students}}</pre></span></td>
+                    </tr>
+                    <tr>
+                        <td>スタッフより</td>
+                        <td>{{-- {{$teacher->profile}} --}} <span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$teacher->message_admin}}</pre></span></td>
                     </tr>
         
                                 <tr>

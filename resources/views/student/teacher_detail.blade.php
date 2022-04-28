@@ -60,6 +60,10 @@
                         <td>メッセージ</td>
                         <td>{{-- {{$teacher->profile}} --}} <span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$teacher->message_students}}</pre></span></td>
                     </tr>
+                    <tr>
+                        <td>スタッフより</td>
+                        <td>{{-- {{$teacher->profile}} --}} <span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$teacher->message_admin}}</pre></span></td>
+                    </tr>
         
                                 <tr>
                                         <td class="align-middle">得意分野</td>
