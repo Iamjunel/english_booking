@@ -62,6 +62,9 @@
 #show{
     cursor: pointer;
 }
+.disabled-cursor{
+    cursor: default !important;
+}
 
         </style>
          
@@ -102,6 +105,9 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
  <script>
+     $('.booked').one('click', function() {
+     $(this).attr('disabled','disabled');
+     });
      $('div.alert').delay(3000).slideUp(300);
      $(document).ready(function () {
             $('#show').click(function(){

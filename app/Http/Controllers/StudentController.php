@@ -27,7 +27,7 @@ class StudentController extends Controller
            if (!empty($user)) {
             $request->session()->put('sid', $request->sid);
             $request->session()->put('name', $request->sid);
-            $request->session()->put('id', $request->id);
+            $request->session()->put('id', $user->id);
             $request->session()->save();
             return redirect('/student');
         } else {
@@ -196,7 +196,8 @@ class StudentController extends Controller
         if (!session()->has('sid')) {
             return redirect('student/login');
         }
-
+        
+        $students_id =  session()->get('id');
         $time = array();
 
         $time_start = null;
@@ -205,7 +206,7 @@ class StudentController extends Controller
         $company = Teacher::orderBy('id')->get();
 
         $time_start = "10:00";
-        $time_end = "23:30";
+        $time_end = "22:30";
         $curr_time = $date . ' ' . $time_start;
         array_push($time, [
             'time' => date('h:ia', strtotime($curr_time))
@@ -255,6 +256,7 @@ class StudentController extends Controller
             foreach ($company as $com) {
                 $this_time = $time[$count]["time"];
                 $company_status = TeacherStatus::Where('teacher_id', $com->id)->where('date', $date)->where('time', $this_time)->first();
+                $booked_logs = BookedLog::Where('teacher_id', $com->id)->where('date', $date)->where('time', $this_time)->first();
                 $bus_hours = BusinessHours::where('teacher_id', $com->id)->first();
                 if ($bus_hours) {
 
@@ -308,6 +310,9 @@ class StudentController extends Controller
                     if (isset($company_status->status) &&  $this_date_str < strtotime($this_time)) {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = $company_status->status;
+                        if (isset($booked_logs->student_id)) {
+                            $time[$count]["student_id"] = $booked_logs->student_id;
+                        }
                     } else if ($this_date_str > strtotime($this_time) && $date == date('Y-m-d')) {
                         $com_list[] = $com;
                         //default status if within range
@@ -333,9 +338,16 @@ class StudentController extends Controller
                 } else {
                     $time[$count]["status_" . $com->id] = null;
                 }
+                /* if(isset($booked_logs->student_id)){
+                    $time[$count]["student_id"] = $booked_logs->student_id;
+                }else{
+                    $time[$count]["student_id"] = null;
+                } */
+                
+               
             }
         }
-
+        //var_dump($time);die;
         $comp_list = array();
         foreach ($company as $com_list) {
             $name = 'status_' . $com_list->id;
@@ -353,7 +365,7 @@ class StudentController extends Controller
             'companies'    => $comp_list
         ));  */
 
-        return view('student.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp', 'comp_list', 'this_date'));
+        return view('student.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp', 'comp_list', 'this_date','students_id'));
     }
     public function contactDetail($id, $date, $time, $status)
     {
@@ -481,7 +493,7 @@ class StudentController extends Controller
             $day = date('l', strtotime($date));
             $time = array();
             $time_start = "10:00";
-            $time_end = "23:30";
+            $time_end = "22:30";
             /*  $time_start = "";
             $time_end = "23:30"; */
             //get the earliest time
@@ -646,6 +658,7 @@ class StudentController extends Controller
                     } else {
                         $time[$count]["status_" . $curr_date] = 'line';
                     }
+                  
                 }
             };
             
@@ -657,6 +670,7 @@ class StudentController extends Controller
         ) {
             $not_current = false;
         }
+
 
         $date_jp = date('Y年m月d日', strtotime($date));
         //$date_jp = $date_jp. '~' . date('Y年m月d日', strtotime('+6days',strtotime($date)));

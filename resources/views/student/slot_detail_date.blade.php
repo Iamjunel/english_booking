@@ -66,10 +66,13 @@
             </thead>
         <tbody style="overflow:auto!important">
             @foreach ($time as $key => $t)
-            <?php $disabled = ""; ?>
+            @if((date('H', strtotime($t["time"])) < 23))
+            <?php $disabled = "";
+             ?>
             <tr class="{{(idate('H', strtotime($t["time"])) < 8)? 'hide-slot' : ''}}"
                 @foreach ($comp_list as $com1)
-                     @if(isset($t["status_".$com1->id]))
+
+                     @if(isset($t["status_".$com1->id]) && (isset($t["student_id"]) && $t["student_id"] == $students_id))
                      @if($t["status_".$com1->id] == "times")
                      <?php $disabled = "return false"; 
                      break;
@@ -82,8 +85,9 @@
                  @foreach ($comp_list as $com)
                  @if(isset($t["status_".$com->id]))
                     @if($t["status_".$com->id] == "circle")
-                    <td class="text-center"><a onclick="{{$disabled}}" href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
-                        <div class="text-info">
+                    
+                    <td class="text-center <?php echo (!empty($disabled))? "disabled-cursor" : ""; ?>"><a onclick="{{$disabled}}" href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
+                        <div class="text-info"> {{$students_id}}
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
                             <circle cx="8" cy="8" r="8"/>
                         </svg>
@@ -91,7 +95,7 @@
                         </a>
                     </td>
                     @elseif($t["status_".$com->id] == "times")
-                    <td class="text-center"><a onclick="{{$disabled}}" href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
+                    <td class="text-center disabled-cursor"><a onclick="return false" href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
                         <span class="text-danger">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -111,6 +115,7 @@
                
                 
             </tr>
+            @endif
             @endforeach
            
            </tbody>
