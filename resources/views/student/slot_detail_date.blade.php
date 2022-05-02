@@ -87,7 +87,7 @@
                     @if($t["status_".$com->id] == "circle")
                     
                     <td class="text-center <?php echo (!empty($disabled))? "disabled-cursor" : ""; ?>"><a onclick="{{$disabled}}" href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
-                        <div class="text-info"> {{$students_id}}
+                        <div class="text-info">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
                             <circle cx="8" cy="8" r="8"/>
                         </svg>
