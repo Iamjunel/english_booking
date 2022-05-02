@@ -469,7 +469,7 @@ class StudentController extends Controller
         $time = date('Y/m/d (D)', $ts) ."".date('H:i', strtotime($time)).'~'. date('H:i', strtotime($time) + 1500 );
 
         $this->sendStudentEmail($student->name,$student->email,$time, $teacher->tid,$teacher->zoom_link);
-        $this->sendTeacherEmail($teacher->email, $time, $teacher->tid,$teacher->zoom_link);
+        $this->sendTeacherEmail($teacher->email, $time, $student->name,$teacher->zoom_link);
         $this->sendAdminEmail($student->email, $time, $teacher->name,$teacher->zoom_link);
 
         return redirect($location)->with('message', '予約が完了しました。')->with('success', true);
