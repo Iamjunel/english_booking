@@ -441,6 +441,7 @@ class StudentController extends Controller
         $current_status = TeacherStatus::where('teacher_id', $tid)->where('date', $date)->where('time', $time)->orderBy('date', 'desc')->first();
         if($current_status){
             $current_status->status = $status;
+            $current_status->comment = "" ;
             $current_status->update();
         }else{
             $curr_status = new TeacherStatus();

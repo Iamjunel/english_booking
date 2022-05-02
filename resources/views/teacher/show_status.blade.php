@@ -61,7 +61,7 @@
                    <td style="background-color: darkgrey;"></td>
                 
                 @endif
-                @if($t["comment"]!="" && $t["status"] =="line")
+                @if($t["comment"]!="" && $t["status"] !="line")
                  <td>{{$t["comment"]}}</td>
                 @else
                 <td style="

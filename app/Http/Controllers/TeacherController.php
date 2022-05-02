@@ -571,6 +571,8 @@ class TeacherController extends Controller
                 if (count($time) > 1) {
                     $status = 'status-' . $time[1];
                     $comment = 'comment-' . $time[1];
+
+                    $new_comment =($request->get($status) == "circle")?  $request->get($comment): null;
                     if ($key == $status) {
                         $teacher_status = TeacherStatus::Where('teacher_id', $teacher_id)->where('date', $current_date)->where('time', $time[1])->first();
                         if (!empty($teacher_status->id)) {
@@ -584,7 +586,7 @@ class TeacherController extends Controller
                             $teacher_status = new TeacherStatus();
                             $teacher_status->time = date("h:ia", strtotime($time[1]));
                             $teacher_status->status = $request->get($status);
-                            $teacher_status->comment = $request->get($comment);
+                            $teacher_status->comment = $new_comment;
                             $teacher_status->teacher_id = $teacher_id;
                             $teacher_status->date = $current_date;
                             $teacher_status->save();
@@ -592,7 +594,7 @@ class TeacherController extends Controller
                             $teacher_status = new TeacherStatus();
                             $teacher_status->time = date("h:ia", strtotime($time[1]));
                             $teacher_status->status = $request->get($status);
-                            $teacher_status->comment = $request->get($comment);
+                            $teacher_status->comment = $new_comment;
                             $teacher_status->teacher_id = $teacher_id;
                             $teacher_status->date = $current_date;
                             $teacher_status->save();
