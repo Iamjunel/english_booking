@@ -578,7 +578,7 @@ class TeacherController extends Controller
                         if (!empty($teacher_status->id)) {
                             //$com_status = teacherStatus::Where('teacher_id', $teacher_id)->delete();
 
-                            DB::table('teacher_status')->Where('teacher_id', $teacher_id)->delete();
+                            DB::table('teacher_status')->Where('teacher_id', $teacher_id)->where('date', $current_date)->where('time', $time[1])->delete();
                             /* $teacher_status->time =  $time[1];
                             $teacher_status->status = $request->get($status);
                             $teacher_status->comment = $request->get($comment);
