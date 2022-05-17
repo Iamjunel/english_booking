@@ -326,28 +326,30 @@ class StudentController extends Controller
                         /*  $time[$count]["status_" . $com->id] = 'circle'; */
                         if (isset($company_status->status)) {
                             $time[$count]["status_" . $com->id] = $company_status->status;
+                           
                         } else {
                             $time[$count]["status_" . $com->id] = 'line';
+                            
                         }
 
                         // $time[$count]["status_" . $com->id] = 'times';
                     } else {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = 'line';
+                       
                     }
                 } else {
                     $time[$count]["status_" . $com->id] = null;
+                    
                 }
-                /* if(isset($booked_logs->student_id)){
-                    $time[$count]["student_id"] = $booked_logs->student_id;
-                }else{
+                if(!isset($time[$count]["student_id"])){
                     $time[$count]["student_id"] = null;
-                } */
+                }
                 
                
             }
         }
-        //var_dump($time);die;
+        
         $comp_list = array();
         foreach ($company as $com_list) {
             $name = 'status_' . $com_list->id;
@@ -486,7 +488,7 @@ class StudentController extends Controller
             $date = date('Y-m-d');
         }
         $company = Teacher::with('business_hours')->where('id', $id)->first();
-
+        
         $previous_date =  date('Y-m-d', strtotime($date . ' -7 day'));
         $next_date = date('Y-m-d', strtotime($date . ' +7 day'));
         if ($company->business_hours) {
@@ -594,11 +596,13 @@ class StudentController extends Controller
                     // var_dump($curr_date);
                     // var_dump($time[$count]["time"]);
                     $company_status = TeacherStatus::Where('teacher_id', $id)->where('date', $curr_date)->where('time', $time[$count]["time"])->first();
+                    $booked_logs = BookedLog::Where('teacher_id', $id)->where('date', $curr_date)->where('time', $time[$count]["time"])->first();
+                    //var_dump($booked_logs);
                     $current_time =  strtotime(date('Y-m-d h:i a', strtotime($curr_date . ' ' . $time[$count]["time"])));
                     $current_time_range =  strtotime(date('Y-m-d h:i a'));
                     /* var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $this_time)));
                     var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $on_time)));die; */
-
+                    
                     $bus_hours = BusinessHours::where('teacher_id', $id)->first();
                     if ($bus_hours) {
 
@@ -648,16 +652,25 @@ class StudentController extends Controller
                         $within_time_range = true;
                     }
                     
+                    
                     if ($curr_date  >= date('Y-m-d') && $within_range) {
 
                         if (isset($company_status->status)) {
 
                             $time[$count]["status_" . $curr_date] = $company_status->status;
+                            if (isset($booked_logs->student_id)) {
+                                $time[$count]["student_id_" . $curr_date] = $booked_logs->student_id;
+                            } else {
+                                $time[$count]["student_id_" . $curr_date] = null;
+                            }   
+                            
                         } else {
                             $time[$count]["status_" . $curr_date] = 'line';
+                            $time[$count]["student_id_" . $curr_date] = null;
                         }
                     } else {
                         $time[$count]["status_" . $curr_date] = 'line';
+                        $time[$count]["student_id_" . $curr_date] = null;
                     }
                   
                 }
@@ -672,12 +685,12 @@ class StudentController extends Controller
             $not_current = false;
         }
 
-
+        $students_id =  session()->get('id');
         $date_jp = date('Y年m月d日', strtotime($date));
         //$date_jp = $date_jp. '~' . date('Y年m月d日', strtotime('+6days',strtotime($date)));
         $date_jp_w = date('Y年m月d日', strtotime('+6days', strtotime($date)));
        
-        return view('student.teacher_slot_detail', compact('time', 'date', 'com', 'company', 'id', 'previous_date', 'next_date', 'not_current', 'date_jp', 'date_jp_w'));
+        return view('student.teacher_slot_detail', compact('time', 'date', 'com', 'company', 'id', 'previous_date', 'next_date', 'not_current', 'date_jp', 'date_jp_w','students_id'));
     }
     
     
