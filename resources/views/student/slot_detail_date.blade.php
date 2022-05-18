@@ -75,12 +75,13 @@
                  
                  @if(isset($t["status_".$com->id]))
                      <?php $disabled = "";
+                    
                     ?>
                      
                   
-                     @if($t["status_".$com->id] == "times" && ($t["student_id"] != $students_id || $t["student_id"] == null))
+                     @if($t["status_".$com->id] == "times" && ($t["student_id_".$com->id] != $students_id || $t["student_id_".$com->id] == null))
                      <?php $disabled = "return false"; 
-                     //break;
+                     
                      ?>
                     
                      @endif
