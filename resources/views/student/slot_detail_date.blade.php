@@ -76,13 +76,13 @@
                  @if(isset($t["status_".$com->id]))
                      <?php $disabled = "";
                     ?>
-                     @if(isset($t["status_".$com1->id]) )
+                     
                   
-                     @if($t["status_".$com1->id] == "times" && $t["student_id"] != $students_id)
+                     @if($t["status_".$com->id] == "times" && $t["student_id"] != $students_id)
                      <?php $disabled = "return false"; 
-                     break;
+                     //break;
                      ?>
-                     @endif
+                    
                      @endif
                     @if($t["status_".$com->id] == "circle")
                     
