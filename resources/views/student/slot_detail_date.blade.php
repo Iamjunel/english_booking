@@ -67,12 +67,12 @@
         <tbody style="overflow:auto!important">
             @foreach ($time as $key => $t)
             @if((date('H', strtotime($t["time"])) < 23))
-            <?php $disabled = "";
-             ?>
+            
     
             <tr class="{{(idate('H', strtotime($t["time"])) < 8)? 'hide-slot' : ''}}"
                 @foreach ($comp_list as $com1)
-                    
+                    <?php $disabled = "";
+             ?>
                      @if(isset($t["status_".$com1->id]) )
                   
                      @if($t["status_".$com1->id] == "times" && $t["student_id"] != $students_id)
