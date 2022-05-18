@@ -78,7 +78,7 @@
                     ?>
                      
                   
-                     @if($t["status_".$com->id] == "times" && $t["student_id"] != $students_id)
+                     @if($t["status_".$com->id] == "times" && ($t["student_id"] != $students_id || $t["student_id"] == null))
                      <?php $disabled = "return false"; 
                      //break;
                      ?>
