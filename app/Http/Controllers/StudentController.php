@@ -417,7 +417,8 @@ class StudentController extends Controller
         $is_above2hrs = 1;
         $curr_time = time();
         $time2hrs = strtotime($time) - 60 * 60 * 2; // 10:09 + 2 hours
-        if ($curr_time >= $time2hrs) {
+        $isToday = date('Y-m-d') == date('Y-m-d', strtotime($date));
+        if ($curr_time >= $time2hrs && $isToday) {
             $is_above2hrs = 0;
         }
         return view('student.contact_detail', compact('company', 'company_status', 'date_jp', 'date', 'time', 'status', 'bh', 'company_images','teacher','teacher_images','is_booked','date_jpm','is_above2hrs'));
