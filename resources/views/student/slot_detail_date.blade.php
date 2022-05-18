@@ -72,7 +72,7 @@
             <tr class="{{(idate('H', strtotime($t["time"])) < 8)? 'hide-slot' : ''}}"
                 @foreach ($comp_list as $com1)
                     <?php $disabled = "";
-             ?>
+                    ?>
                      @if(isset($t["status_".$com1->id]) )
                   
                      @if($t["status_".$com1->id] == "times" && $t["student_id"] != $students_id)
@@ -87,6 +87,16 @@
                  @foreach ($comp_list as $com)
                  
                  @if(isset($t["status_".$com->id]))
+                     <?php $disabled = "";
+                    ?>
+                    
+                  
+                     @if($t["status_".$com1->id] == "times" && $t["student_id"] != $students_id)
+                     <?php $disabled = "return false"; 
+                    // break;
+                     ?>
+                    
+                     @endif
                     @if($t["status_".$com->id] == "circle")
                     
                     <td class="text-center <?php echo (!empty($disabled))? "disabled-cursor" : ""; ?>"><a  href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
