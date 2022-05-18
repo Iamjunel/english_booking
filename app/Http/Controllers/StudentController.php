@@ -410,9 +410,17 @@ class StudentController extends Controller
         $teacher = $company;
         $teacher_images = $company_images;
         $student = Student::where('sid',$sid)->first();
+        
+ 
         $checked_booked = BookedLog::where('student_id', $student->id)->where('teacher_id', $id)->where('date', $date)->where('time', $time)->first();
         $is_booked = $checked_booked ? true : false;
-        return view('student.contact_detail', compact('company', 'company_status', 'date_jp', 'date', 'time', 'status', 'bh', 'company_images','teacher','teacher_images','is_booked','date_jpm'));
+        $is_above2hrs = 1;
+        $curr_time = time();
+        $time2hrs = strtotime($time) - 60 * 60 * 2; // 10:09 + 2 hours
+        if ($curr_time >= $time2hrs) {
+            $is_above2hrs = 0;
+        }
+        return view('student.contact_detail', compact('company', 'company_status', 'date_jp', 'date', 'time', 'status', 'bh', 'company_images','teacher','teacher_images','is_booked','date_jpm','is_above2hrs'));
     }
 
     public function storeBooked(Request $request)

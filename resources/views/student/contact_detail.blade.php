@@ -11,8 +11,11 @@
                 <div class="row justify-content-center">
                    {{-- <button class="btn btn-primary my-2" onclick="callANumber('tel:{{$company->phone}}')">予約をする</button> --}}
                     @if($is_booked)
-                    
-                    <button class="btn btn-warning" data-toggle="modal" data-target="#sample-{{$company->id}}">レッスンをキャンセルする</button>
+                    @if($is_above2hrs)
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#sample-{{$company->id}}">レッスンをキャンセルする</button>                      
+                    @else
+                    <button class="btn btn-secondary" disabled data-toggle="modal" data-target="#sample-{{$company->id}}">レッスンをキャンセルする</button>               
+                    @endif
                     <div class="modal fade" id="sample-{{$company->id}}" tabindex="-1" role="dialog" aria- 
                     labelledby="demoModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm" role="document">
@@ -41,7 +44,8 @@
                             </form>
                         </div>
                     </div>
-                   @else 
+                   @else
+                   
                    <button class="btn btn-primary" data-toggle="modal" data-target="#sample-{{$company->id}}">予約をする</button>
                     
                    <div class="modal fade" id="sample-{{$company->id}}" tabindex="-1" role="dialog" aria- 
