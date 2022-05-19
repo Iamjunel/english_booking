@@ -642,7 +642,7 @@ class StudentController extends Controller
                         $curr_end_time = null;
                     }
                     $within_range = false;
-                    $within_time_range = true;
+                    $within_time_range = false;
 
                     if ($curr_start_time != null && $curr_end_time != null) {
                         $curr_start_time = date('h:i a', strtotime($curr_start_time));
@@ -658,21 +658,24 @@ class StudentController extends Controller
                     }
 
                     if ($current_time >= $current_time_range) {
-                        $within_time_range = true;
+                        $within_time_range = false;
                     }
                     
                     
                     if ($curr_date  >= date('Y-m-d') && $within_range) {
 
                         if (isset($company_status->status)) {
-
-                            $time[$count]["status_" . $curr_date] = $company_status->status;
-                            if (isset($booked_logs->student_id)) {
-                                $time[$count]["student_id_" . $curr_date] = $booked_logs->student_id;
-                            } else {
+                            if($within_time_range){
+                                $time[$count]["status_" . $curr_date] = $company_status->status;
+                                if (isset($booked_logs->student_id)) {
+                                    $time[$count]["student_id_" . $curr_date] = $booked_logs->student_id;
+                                } else {
+                                    $time[$count]["student_id_" . $curr_date] = null;
+                                }   
+                            }else{
+                                $time[$count]["status_" . $curr_date] = 'line';
                                 $time[$count]["student_id_" . $curr_date] = null;
-                            }   
-                            
+                            }
                         } else {
                             $time[$count]["status_" . $curr_date] = 'line';
                             $time[$count]["student_id_" . $curr_date] = null;
