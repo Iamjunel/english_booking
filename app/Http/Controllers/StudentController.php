@@ -307,7 +307,7 @@ class StudentController extends Controller
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = $company_status->status;
                     } else */
-                    if (isset($company_status->status) &&  $this_date_str < strtotime($this_time)) {
+                    if (isset($company_status->status)) {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = $company_status->status;
                         if (isset($booked_logs->student_id)) {
