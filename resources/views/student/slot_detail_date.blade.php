@@ -74,17 +74,7 @@
                  @foreach ($comp_list as $com)
                  
                  @if(isset($t["status_".$com->id]))
-                     <?php $disabled = "";
                     
-                    ?>
-                     
-                  
-                     @if($t["status_".$com->id] == "times" && ($t["student_id_".$com->id] != $students_id || $t["student_id_".$com->id] == null))
-                     <?php $disabled = "return false"; 
-                     
-                     ?>
-                    
-                     @endif
                     @if($t["status_".$com->id] == "circle")
                     
                     <td class="text-center <?php echo (!empty($disabled))? "disabled-cursor" : ""; ?>"><a  href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
@@ -96,8 +86,14 @@
                         </a>
                     </td>
                     @elseif($t["status_".$com->id] == "times")
+                     <?php $disabled = "";?>
+                     
+                  
+                     @if($t["student_id_".$com->id] != $students_id || $t["student_id_".$com->id] == null)
+                     <?php $disabled = "return false"; ?>
+                     @endif
                     <td class="text-center disabled-cursor"><a onclick="{{$disabled}}" href="/student/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
-                        <span class="text-danger">
+                        <span class="text-danger"> <?php echo $t["student_id_".$com->id]; ?>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                             </svg>
