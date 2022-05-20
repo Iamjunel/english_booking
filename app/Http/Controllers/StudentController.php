@@ -642,7 +642,7 @@ class StudentController extends Controller
                         $curr_end_time = null;
                     }
                     $within_range = false;
-                    $within_time_range = false;
+                    $within_time_range = true;
 
                     if ($curr_start_time != null && $curr_end_time != null) {
                         $curr_start_time = date('h:i a', strtotime($curr_start_time));
