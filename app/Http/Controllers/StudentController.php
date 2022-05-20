@@ -326,7 +326,9 @@ class StudentController extends Controller
                         /*  $time[$count]["status_" . $com->id] = 'circle'; */
                         if (isset($company_status->status)) {
                             $time[$count]["status_" . $com->id] = $company_status->status;
-                           
+                            if (isset($booked_logs->student_id)) {
+                                $time[$count]["student_id_" . $com->id] = $booked_logs->student_id;
+                            }
                         } else {
                             $time[$count]["status_" . $com->id] = 'line';
                             
