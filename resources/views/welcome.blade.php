@@ -10,11 +10,8 @@
  @section('content')
      
  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <div class="mb-auto">
-        <div>
-          <h6 class="float-left mb-0">{{-- 介護タクシー予約サイト --}}Think English Learning Center</h6>
-          <p class="nav nav-masthead justify-content-center float-right">{{-- 津ケアタクネット --}} Think English Learning Center</p>
-        </div>
+       <div class="mb-auto">
+        
 
     </div>
 
